@@ -61,7 +61,7 @@ public class ProductTest extends com.salesmanager.test.common.AbstractSalesManag
 	 * This method creates multiple products using multiple catelog APIs
 	 * @throws ServiceException
 	 */
-	@Test
+	//@Test
 	public void testCreateProduct() throws Exception {
 
 	    Language en = languageService.getByCode("en");
