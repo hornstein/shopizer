@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 package com.salesmanager.shop.model.order;
 
 import java.io.Serializable;
@@ -39,3 +40,46 @@ public class PersistableOrder extends OrderEntity implements Serializable {
 
 
 }
+=======
+package com.salesmanager.shop.model.order;
+
+import java.io.Serializable;
+import java.util.List;
+
+import com.salesmanager.shop.model.customer.PersistableCustomer;
+
+
+public class PersistableOrder extends OrderEntity implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private PersistableCustomer customer;//might already exist if id > 0, otherwise persist
+	private List<PersistableOrderProduct> orderProductItems;
+	private boolean shipToBillingAdress = true;
+	
+	
+	public void setOrderProductItems(List<PersistableOrderProduct> orderProductItems) {
+		this.orderProductItems = orderProductItems;
+	}
+	public List<PersistableOrderProduct> getOrderProductItems() {
+		return orderProductItems;
+	}
+	public void setCustomer(PersistableCustomer customer) {
+		this.customer = customer;
+	}
+	public PersistableCustomer getCustomer() {
+		return customer;
+	}
+	public boolean isShipToBillingAdress() {
+		return shipToBillingAdress;
+	}
+	public void setShipToBillingAdress(boolean shipToBillingAdress) {
+		this.shipToBillingAdress = shipToBillingAdress;
+	}
+
+
+
+}
+>>>>>>> 2859f238d2d6bffecb4d317fd3c845ed1cd0db23

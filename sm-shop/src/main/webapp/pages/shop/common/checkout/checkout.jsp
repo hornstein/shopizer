@@ -21,7 +21,11 @@ response.setDateHeader ("Expires", -1);
 
 <script src="<c:url value="/resources/js/jquery.maskedinput.min.js" />"></script>
 
+<<<<<<< HEAD
 
+=======
+11111111111111
+>>>>>>> 2859f238d2d6bffecb4d317fd3c845ed1cd0db23
 <!-- subtotals template -->
 <script type="text/html" id="subTotalsTemplate">
 		{{#subTotals}}
@@ -440,7 +444,13 @@ function bindActions() {
     });
     
 	$("#submitOrder").click(function(e) {
+<<<<<<< HEAD
 		e.preventDefault();//do not submit form
+=======
+
+	    alert("ashjshjhjhdjfh");
+	    e.preventDefault();//do not submit form
+>>>>>>> 2859f238d2d6bffecb4d317fd3c845ed1cd0db23
 		formValid = isFormValid();
 		resetErrorMessage();
 		setCountrySettings('billing',$('.billing-country-list').val());
@@ -469,6 +479,10 @@ function bindActions() {
 		else if(paymentSelection.indexOf('stripe') >= 0) {
 			//console.log('Stripe ');
 			$('#paymentMethodType').val('CREDITCARD');
+<<<<<<< HEAD
+=======
+			alert("Stripe");
+>>>>>>> 2859f238d2d6bffecb4d317fd3c845ed1cd0db23
 			initStripePayment();
 		}		
 		else if(paymentSelection.indexOf('beanstream') >= 0) {

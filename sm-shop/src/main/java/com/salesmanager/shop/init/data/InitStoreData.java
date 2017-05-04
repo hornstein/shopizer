@@ -148,7 +148,11 @@ public class InitStoreData implements InitData {
 		Language fr = languageService.getByCode("fr");
 		
 		Country canada = countryService.getByCode("CA");
+<<<<<<< HEAD
 		Zone zone = zoneService.getByCode("QC");
+=======
+		Zone zone = zoneService.getByCode("QC", canada);
+>>>>>>> 2859f238d2d6bffecb4d317fd3c845ed1cd0db23
 		
 		//create a merchant
 		MerchantStore store = merchantService.getMerchantStore(MerchantStore.DEFAULT_STORE);

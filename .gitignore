@@ -11,3 +11,14 @@
 *.class
 /bin/
 /WebContent/
+<<<<<<< HEAD
+=======
+/SALESMANAGER.h2.db/
+/SALESMANAGER.lock.db/
+*/sm-shop/**
+
+**/bin
+**/build
+**/.settings
+**/.classpath
+>>>>>>> 2859f238d2d6bffecb4d317fd3c845ed1cd0db23

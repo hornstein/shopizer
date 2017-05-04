@@ -12,7 +12,11 @@ import com.salesmanager.core.model.reference.zone.ZoneDescription;
 
 public interface ZoneService extends SalesManagerEntityService<Long, Zone> {
 	
+<<<<<<< HEAD
 	Zone getByCode(String code);
+=======
+	Zone getByCode(String code, Country country);
+>>>>>>> 2859f238d2d6bffecb4d317fd3c845ed1cd0db23
 
 	void addDescription(Zone zone, ZoneDescription description) throws ServiceException;
 

@@ -333,7 +333,11 @@ public class CustomerController {
 
 		
 		if (customer.getShowDeliveryStateList().equalsIgnoreCase("yes" )) {
+<<<<<<< HEAD
 			deliveryZone = zoneService.getByCode(customer.getDelivery().getZone().getCode());
+=======
+			deliveryZone = zoneService.getByCode(customer.getDelivery().getZone().getCode(), deliveryCountry);
+>>>>>>> 2859f238d2d6bffecb4d317fd3c845ed1cd0db23
 			customer.getDelivery().setState( null );
 			
 		}else if (customer.getShowDeliveryStateList().equalsIgnoreCase("no" )){
@@ -342,7 +346,11 @@ public class CustomerController {
 		}
 	
 		if (customer.getShowBillingStateList().equalsIgnoreCase("yes" )) {
+<<<<<<< HEAD
 			billingZone = zoneService.getByCode(customer.getBilling().getZone().getCode());
+=======
+			billingZone = zoneService.getByCode(customer.getBilling().getZone().getCode(), billingCountry);
+>>>>>>> 2859f238d2d6bffecb4d317fd3c845ed1cd0db23
 			customer.getBilling().setState( null );
 			
 		}else if (customer.getShowBillingStateList().equalsIgnoreCase("no" )){

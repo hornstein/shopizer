@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 package com.salesmanager.core.business.services.user;
 
 import java.util.List;
@@ -31,3 +32,38 @@ public interface PermissionService extends SalesManagerEntityService<Integer, Pe
 	void removePermission(Permission permission, Group group) throws ServiceException;
 
 }
+=======
+package com.salesmanager.core.business.services.user;
+
+import java.util.List;
+
+import com.salesmanager.core.business.exception.ServiceException;
+import com.salesmanager.core.business.services.common.generic.SalesManagerEntityService;
+import com.salesmanager.core.model.user.Group;
+import com.salesmanager.core.model.user.Permission;
+import com.salesmanager.core.model.user.PermissionCriteria;
+import com.salesmanager.core.model.user.PermissionList;
+
+
+
+public interface PermissionService extends SalesManagerEntityService<Integer, Permission> {
+
+	List<Permission> getByName();
+
+	List<Permission> listPermission()  throws ServiceException;
+
+	Permission getById(Integer permissionId);
+
+
+//	void deletePermission(Permission permission) throws ServiceException;
+
+	List<Permission> getPermissions(List<Integer> groupIds) throws ServiceException;
+
+	void deletePermission(Permission permission) throws ServiceException;
+
+	PermissionList listByCriteria(PermissionCriteria criteria) throws ServiceException ;
+
+	void removePermission(Permission permission, Group group) throws ServiceException;
+
+}
+>>>>>>> 2859f238d2d6bffecb4d317fd3c845ed1cd0db23

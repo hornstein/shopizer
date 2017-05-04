@@ -41,8 +41,13 @@ public class ZoneServiceImpl extends SalesManagerEntityServiceImpl<Long, Zone> i
 	}
 
 	@Override
+<<<<<<< HEAD
 	public Zone getByCode(String code) {
 		return zoneRepository.findByCode(code);
+=======
+	public Zone getByCode(String code, Country country) {
+		return zoneRepository.findByCodeAndCountryId(code, country.getId());
+>>>>>>> 2859f238d2d6bffecb4d317fd3c845ed1cd0db23
 	}
 
 	@Override

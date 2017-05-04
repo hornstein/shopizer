@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 package com.salesmanager.shop.model.customer.attribute;
 
 import java.io.Serializable;
@@ -21,3 +22,28 @@ public class PersistableCustomerOption extends CustomerOptionEntity
 	}
 
 }
+=======
+package com.salesmanager.shop.model.customer.attribute;
+
+import java.io.Serializable;
+import java.util.List;
+
+public class PersistableCustomerOption extends CustomerOptionEntity
+		implements Serializable {
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private List<CustomerOptionDescription> descriptions;
+
+	public void setDescriptions(List<CustomerOptionDescription> descriptions) {
+		this.descriptions = descriptions;
+	}
+
+	public List<CustomerOptionDescription> getDescriptions() {
+		return descriptions;
+	}
+
+}
+>>>>>>> 2859f238d2d6bffecb4d317fd3c845ed1cd0db23

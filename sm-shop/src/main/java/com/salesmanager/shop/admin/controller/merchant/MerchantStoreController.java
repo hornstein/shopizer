@@ -284,7 +284,11 @@ public class MerchantStoreController {
 		country = countryService.getByCode(country.getIsoCode());
 		Zone zone = store.getZone();
 		if(zone!=null) {
+<<<<<<< HEAD
 			zone = zoneService.getByCode(zone.getCode());
+=======
+			zone = zoneService.getByCode(zone.getCode(), country);
+>>>>>>> 2859f238d2d6bffecb4d317fd3c845ed1cd0db23
 		}
 		Currency currency = store.getCurrency();
 		currency = currencyService.getById(currency.getId());

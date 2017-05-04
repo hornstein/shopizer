@@ -1,3 +1,9 @@
+<<<<<<< HEAD
 activeuserprofiles=CANL-1FPKN32;Team
 eclipse.preferences.version=1
 org.eclipse.rse.systemtype.local.systemType.defaultUserId=c.samson
+=======
+activeuserprofiles=CANL-1FPKN32;Team
+eclipse.preferences.version=1
+org.eclipse.rse.systemtype.local.systemType.defaultUserId=c.samson
+>>>>>>> 2859f238d2d6bffecb4d317fd3c845ed1cd0db23
