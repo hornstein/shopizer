@@ -7,7 +7,7 @@ import cucumber.api.junit.Cucumber;
 
 @RunWith(Cucumber.class) 
 @CucumberOptions( 
-    features = "src/test/java/com/salesmanager/cucumber/" 
+    features = "src/test/java/com/salesmanager/cucumber/alo" 
     ,glue={"classpath:"} 
     ) 
   
