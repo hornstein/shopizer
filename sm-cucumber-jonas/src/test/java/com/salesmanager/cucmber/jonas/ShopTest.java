@@ -48,7 +48,7 @@ public class ShopTest {
 		
 		@Given("^I am on shopizer website$")
 		public void shopizerHomePage(){
-			driver.get("http://jenkins2017.westeurope.cloudapp.azure.com:8080/shop/product/the-big-switch.html");
+			driver.get("http://jenkins2017.westeurope.cloudapp.azure.com:8080/shop/");
 		}
 		@And("^I click on defaultstore$")
 		public void defaultStore(){
@@ -217,7 +217,7 @@ public class ShopTest {
 		@And("^I add a book$")
 		public void aAb(){
 			//WebElement add = driver.findElement(By.xpath( ".//*[@id='pageContainer']/div[2]/div[3]/div[2]/div/div[3]/div/div[1]/a/img"));
-			WebElement add = driver.findElement(By.xpath(".//*[@id='tab1']/ul/li[3]/div/div/a[2]"));
+			WebElement add = driver.findElement(By.xpath(".//*[@id='pageContainer']/div[2]/div[3]/div[2]/div/div[3]/div/div[2]/div/div[2]/a[2]"));
 			add.click();
 			
 			WebDriverWait wait = new WebDriverWait(driver, 10);
