@@ -41,7 +41,7 @@ Then I check that the book is added
 
 @Selenium
 Scenario: Test the checkout function
-Given I am on shopizer website
+Given I am on sp website
 And I add the book Node Web Development
 And I click on open cart and checkout
 Then I review my order

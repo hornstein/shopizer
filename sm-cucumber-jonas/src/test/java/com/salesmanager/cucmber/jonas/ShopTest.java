@@ -7,6 +7,8 @@ import cucumber.api.java.Before;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -15,14 +17,20 @@ import cucumber.api.java.en.And;
 import cucumber.api.java.en.But;
 import static org.junit.Assert.assertEquals;
 
+import org.openqa.selenium.Dimension;
+import java.util.concurrent.TimeUnit;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
-
+import java.net.URL;
+import java.util.concurrent.TimeUnit;
 public class ShopTest {
 	WebDriver driver;
+	/*private WebDriver driver;
+	private String baseUrl;
 	
-	/*@Before("@selenium")
+	@Before("@selenium")
 	public void setUp() throws Throwable {
 		DesiredCapabilities capability = DesiredCapabilities.firefox();
 		capability.setBrowserName("firefox");
@@ -134,7 +142,7 @@ public class ShopTest {
 		@And("^I click on add to cart$")
 		public void atc(){
 			//WebElement add = driver.findElement(By.xpath( ".//*[@id='pageContainer']/div[2]/div[3]/div[2]/div/div[3]/div/div[1]/a/img"));
-			WebElement add = driver.findElement(By.xpath(".//*[@id='tab1']/ul/li[3]/div/div/a[2]"));
+			WebElement add = driver.findElement(By.xpath(".//*[@id='pageContainer']/div[2]/div[3]/div[2]/div/div[3]/div/div[2]/div/div[2]/a[2]"));
 			add.click();
 			
 			WebDriverWait w = new WebDriverWait(driver, 10);
@@ -163,10 +171,15 @@ public class ShopTest {
 			
 			driver.close();
 		}
+		@Given("^I am on sp website$")
+		public void sp(){
+		driver.get("http://jenkins2017.westeurope.cloudapp.azure.com:8080/shop/");
+		}
 		@And("^I add the book Node Web Development$")
 		public void addNwd(){
 			//WebElement add = driver.findElement(By.xpath( ".//*[@id='pageContainer']/div[2]/div[3]/div[2]/div/div[3]/div/div[1]/a/img"));
-			WebElement add = driver.findElement(By.xpath(".//*[@id='tab1']/ul/li[3]/div/div/a[2]"));
+			//WebElement add = driver.findElement(By.xpath(".//*[@id='tab1']/ul/li[3]/div/div/a[2]"));
+			WebElement add = driver.findElement(By.xpath(".//*[@id='pageContainer']/div[2]/div[3]/div[2]/div/div[3]/div/div[2]/div/div[2]/a[2]"));
 			add.click();
 			
 			WebDriverWait wait = new WebDriverWait(driver, 10);
