@@ -53,3 +53,11 @@ And I add a book
 And I click on open cart to see the added book
 And I click on remove
 Then I receive and error message
+
+@Selenium
+Scenario: Test remove book
+Given I am on shopizer website
+And I add book Node WD
+And I open cart
+And I click on x to remove book
+Then Book should be removed
