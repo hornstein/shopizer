@@ -139,11 +139,15 @@ public class ShopTest {
 			assertEquals("Name", nm.getText());
 			driver.close();
 		}
+		
 		@And("^I click on add to cart$")
 		public void atc(){
 			//WebElement add = driver.findElement(By.xpath( ".//*[@id='pageContainer']/div[2]/div[3]/div[2]/div/div[3]/div/div[1]/a/img"));
-			WebElement add = driver.findElement(By.xpath(".//*[@id='pageContainer']/div[2]/div[3]/div[2]/div/div[3]/div/div[2]/div/div[2]/a[2]"));
+			WebElement add = driver.findElement(By.xpath(".//*[@id='pageContainer']/div[2]/div[3]/div[2]/div/div[3]/div/div[1]/a/img"));
 			add.click();
+			
+			JavascriptExecutor jse = (JavascriptExecutor)driver;
+			jse.executeScript("scroll(0, 250);");
 			
 			WebDriverWait w = new WebDriverWait(driver, 10);
 			w.until(ExpectedConditions.elementToBeClickable(By.xpath(".//*[@id='input-2']/div/button")));
@@ -171,15 +175,9 @@ public class ShopTest {
 			
 			driver.close();
 		}
-		@Given("^I am on sp website$")
-		public void sp(){
-		driver.get("http://jenkins2017.westeurope.cloudapp.azure.com:8080/shop/");
-		}
 		@And("^I add the book Node Web Development$")
 		public void addNwd(){
-			//WebElement add = driver.findElement(By.xpath( ".//*[@id='pageContainer']/div[2]/div[3]/div[2]/div/div[3]/div/div[1]/a/img"));
-			//WebElement add = driver.findElement(By.xpath(".//*[@id='tab1']/ul/li[3]/div/div/a[2]"));
-			WebElement add = driver.findElement(By.xpath(".//*[@id='pageContainer']/div[2]/div[3]/div[2]/div/div[3]/div/div[2]/div/div[2]/a[2]"));
+			WebElement add = driver.findElement(By.xpath(".//*[@id='pageContainer']/div[2]/div[3]/div[2]/div/div[3]/div/div[1]/a/img"));
 			add.click();
 			
 			WebDriverWait wait = new WebDriverWait(driver, 10);
@@ -216,8 +214,7 @@ public class ShopTest {
 		}
 		@And("^I add a book$")
 		public void aAb(){
-			//WebElement add = driver.findElement(By.xpath( ".//*[@id='pageContainer']/div[2]/div[3]/div[2]/div/div[3]/div/div[1]/a/img"));
-			WebElement add = driver.findElement(By.xpath(".//*[@id='pageContainer']/div[2]/div[3]/div[2]/div/div[3]/div/div[2]/div/div[2]/a[2]"));
+			WebElement add = driver.findElement(By.xpath(".//*[@id='pageContainer']/div[2]/div[3]/div[2]/div/div[3]/div/div[1]/a/img"));
 			add.click();
 			
 			WebDriverWait wait = new WebDriverWait(driver, 10);
@@ -263,11 +260,11 @@ public class ShopTest {
 		}
 		@And("^I add book Node WD$")
 		public void addNwD(){
-			WebElement add = driver.findElement(By.xpath( ".//*[@id='pageContainer']/div[2]/div[3]/div[2]/div/div[3]/div/div[1]/a/img"));
+			WebElement add = driver.findElement(By.xpath(".//*[@id='pageContainer']/div[2]/div[3]/div[2]/div/div[3]/div/div[1]/a/img"));
 			add.click();
 			
-			WebDriverWait w = new WebDriverWait(driver, 10);
-			w.until(ExpectedConditions.elementToBeClickable(By.xpath(".//*[@id='input-2']/div/button")));
+			WebDriverWait wait = new WebDriverWait(driver, 10);
+			wait.until(ExpectedConditions.elementToBeClickable(By.xpath( ".//*[@id='input-2']/div/button")));
 			
 			WebElement button = driver.findElement(By.xpath( ".//*[@id='input-2']/div/button"));
 			button.click();
@@ -277,6 +274,9 @@ public class ShopTest {
 		public void openC(){
 			JavascriptExecutor jse = (JavascriptExecutor)driver;
 			jse.executeScript("scroll(0, -250);");
+			
+			WebDriverWait er = new WebDriverWait(driver, 10);
+			er.until(ExpectedConditions.elementToBeClickable(By.xpath(".//*[@id='open-cart']")));
 			
 			WebElement shop = driver.findElement(By.xpath(".//*[@id='open-cart']"));
 			shop.click();
