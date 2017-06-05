@@ -56,8 +56,7 @@ Then I receive and error message
 
 @Selenium
 Scenario: Test remove book
-Given I am on shopizer website
+Given I am under book Node Web D
 And I add book Node WD
-And I open cart
-And I click on x to remove book
+And I open cart and click on x to remove book
 Then Book should be removed

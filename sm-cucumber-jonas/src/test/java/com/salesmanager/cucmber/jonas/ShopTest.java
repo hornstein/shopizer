@@ -258,31 +258,35 @@ public class ShopTest {
 			
 			driver.close();
 		}
+		@Given("^I am under book Node Web D$")
+		public void nWd(){
+			driver.get("http://jenkins2017.westeurope.cloudapp.azure.com:8080/shop/product/Node-Web-Development.html");
+		}
 		@And("^I add book Node WD$")
 		public void addNwD(){
-			WebElement add = driver.findElement(By.xpath(".//*[@id='pageContainer']/div[2]/div[3]/div[2]/div/div[3]/div/div[1]/a/img"));
-			add.click();
-			
 			WebDriverWait wait = new WebDriverWait(driver, 10);
 			wait.until(ExpectedConditions.elementToBeClickable(By.xpath( ".//*[@id='input-2']/div/button")));
 			
 			WebElement button = driver.findElement(By.xpath( ".//*[@id='input-2']/div/button"));
 			button.click();
 			System.out.println("Book Node Web Development has been added to shopping cart");
+			
 		}
-		@And("^I open cart$")
+		@And("^I open cart and click on x to remove book$")
 		public void openC(){
 			JavascriptExecutor jse = (JavascriptExecutor)driver;
 			jse.executeScript("scroll(0, -250);");
 			
-			WebDriverWait er = new WebDriverWait(driver, 10);
+			WebDriverWait er = new WebDriverWait(driver, 20);
 			er.until(ExpectedConditions.elementToBeClickable(By.xpath(".//*[@id='open-cart']")));
+			driver.findElement(By.xpath(".//*[@id='open-cart']")).click();
 			
-			WebElement shop = driver.findElement(By.xpath(".//*[@id='open-cart']"));
-			shop.click();
-		}
-		@And("^I click on x to remove book$")
-		public void removeB(){
+			//WebElement cart = driver.findElement(By.xpath(".//*[@id='open-cart']"));
+			//cart.click();
+			
+			WebDriverWait ww = new WebDriverWait(driver, 20);
+			ww.until(ExpectedConditions.elementToBeClickable(By.xpath(".//*[@id='2']/td[4]/button")));
+			
 			WebElement x = driver.findElement(By.xpath(".//*[@id='2']/td[4]/button"));
 			x.click();
 			
