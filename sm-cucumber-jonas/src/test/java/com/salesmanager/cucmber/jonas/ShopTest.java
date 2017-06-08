@@ -26,8 +26,8 @@ import org.openqa.selenium.WebElement;
 import java.net.URL;
 import java.util.concurrent.TimeUnit;
 public class ShopTest {
-	WebDriver driver;
-	/*private WebDriver driver;
+	//WebDriver driver;
+	private WebDriver driver;
 	private String baseUrl;
 	
 	@Before("@selenium")
@@ -38,13 +38,13 @@ public class ShopTest {
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 		driver.manage().window().setSize(new Dimension(1920,1080));
 	    baseUrl = "http://jenkins2017.westeurope.cloudapp.azure.com:8080";
-	}*/
+	}
 	
-	@Before("@Selenium")
+	/*@Before("@Selenium")
 	public void setup(){
 	System.setProperty("webdriver.gecko.driver", "/Users/jonaslindberg/Tools/Geckodriver/geckodriver"); //geckodriver för att kunna hitta sidan. Sedan vart man lagt geckodriver.
 	driver = new FirefoxDriver();
-	}
+	}*/
 		
 		@Given("^I am on shopizer website$")
 		public void shopizerHomePage(){
