@@ -284,30 +284,30 @@ public class ShopTest {
 			//WebElement cart = driver.findElement(By.className("btn dropdown-toggle"));
 			//cart.click();
 
-				Thread.sleep(2000);
-			
+				Thread.sleep(2500);
 			
 			WebDriverWait ww = new WebDriverWait(driver, 20);
 			ww.until(ExpectedConditions.elementToBeClickable(By.xpath(".//*[@id='2']/td[4]/button")));
 			
-				Thread.sleep(2000);
+				Thread.sleep(2500);
 			
 			
 			WebElement x = driver.findElement(By.xpath(".//*[@id='2']/td[4]/button"));
 			x.click();
 			
-				Thread.sleep(2000);
+				Thread.sleep(2500);
 
 			WebElement shop2 = driver.findElement(By.xpath(".//*[@id='open-cart']"));//Får göra det två gånger för att det ska fungera.
 			shop2.click();
 			
-				Thread.sleep(2000);
+				Thread.sleep(2500);
 			
 			WebElement x2 = driver.findElement(By.xpath(".//*[@id='2']/td[4]/button"));//Får göra det två gånger för att det ska fungera.
 			x2.click();
 		}
 		@Then("^Book should be removed$")
-		public void bookR(){
+		public void bookR() throws InterruptedException{
+			Thread.sleep(2500);
 			WebElement zero = driver.findElement(By.xpath(".//*[@id='miniCartSummary']"));
 			zero.getText();
 			assertEquals("SHOPPING CART (0)", zero.getText());
