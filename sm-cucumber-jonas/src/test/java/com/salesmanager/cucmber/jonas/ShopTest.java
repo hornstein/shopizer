@@ -272,8 +272,8 @@ public class ShopTest {
 			System.out.println("Book Node Web Development has been added to shopping cart");
 			
 		}
-		@And("^I open cart and click on x to remove book$")
-		public void openC(){
+		@When("^I open cart and click on x$")
+		public void openC() throws InterruptedException{
 			JavascriptExecutor jse = (JavascriptExecutor)driver;
 			jse.executeScript("scroll(0, -250);");
 			
@@ -281,17 +281,27 @@ public class ShopTest {
 			er.until(ExpectedConditions.elementToBeClickable(By.xpath(".//*[@id='open-cart']")));
 			driver.findElement(By.xpath(".//*[@id='open-cart']")).click();
 			
-			//WebElement cart = driver.findElement(By.xpath(".//*[@id='open-cart']"));
+			//WebElement cart = driver.findElement(By.className("btn dropdown-toggle"));
 			//cart.click();
+
+				Thread.sleep(2000);
+			
 			
 			WebDriverWait ww = new WebDriverWait(driver, 20);
 			ww.until(ExpectedConditions.elementToBeClickable(By.xpath(".//*[@id='2']/td[4]/button")));
 			
+				Thread.sleep(2000);
+			
+			
 			WebElement x = driver.findElement(By.xpath(".//*[@id='2']/td[4]/button"));
 			x.click();
 			
+				Thread.sleep(2000);
+
 			WebElement shop2 = driver.findElement(By.xpath(".//*[@id='open-cart']"));//Får göra det två gånger för att det ska fungera.
 			shop2.click();
+			
+				Thread.sleep(2000);
 			
 			WebElement x2 = driver.findElement(By.xpath(".//*[@id='2']/td[4]/button"));//Får göra det två gånger för att det ska fungera.
 			x2.click();

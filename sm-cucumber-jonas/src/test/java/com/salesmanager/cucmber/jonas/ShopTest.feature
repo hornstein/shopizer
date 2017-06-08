@@ -58,5 +58,5 @@ Then I receive and error message
 Scenario: Test remove book
 Given I am under book Node Web D
 And I add book Node WD
-And I open cart and click on x to remove book
+When I open cart and click on x
 Then Book should be removed
