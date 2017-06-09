@@ -5,7 +5,7 @@ This feature deals with the adding and removing of a book
 @product
 Scenario: find and add a book to the shoppingcart successfully
 Given I navigate to the home page
-And I choose a book with title contains "google"
+And I choose a book with title contains "google.jpg"
 And I add the book to the shoppingcart
 Then I verify that the book is added to the shoppingcart
 
@@ -13,7 +13,7 @@ Then I verify that the book is added to the shoppingcart
 @product
 Scenario: delete a book from the shoppingcart after being added to it
 Given I navigate to the home page
-And I choose a book with title contains "google"
+And I choose a book with title contains "google.jpg"
 And I add the book to the shoppingcart
 Then I verify that the book is added to the shoppingcart
 When I click on delete th book should desappear from shoppingcart

@@ -23,7 +23,7 @@ public class  ProductManageTestSteps extends ParentPage{
 	JavascriptExecutor js;
 	
 	@Before("@product")
-	public void setup(){
+	public void setup() throws Throwable{
 		ParentPage.init();
 	}
 	

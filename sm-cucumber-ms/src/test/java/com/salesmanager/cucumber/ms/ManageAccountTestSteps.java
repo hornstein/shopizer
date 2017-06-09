@@ -10,7 +10,7 @@ import cucumber.api.java.en.And;
 public class ManageAccountTestSteps extends ParentPage{
 	
 	@Before("@account")
-	public void setup(){
+	public void setup() throws Throwable{
 		ParentPage.init();
 	}
 	
@@ -21,6 +21,7 @@ public class ManageAccountTestSteps extends ParentPage{
  
   @When("^I enter \"(.*)\" as a username and \"(.*)\" as a password i should see the name on the top of the page$")
   public void enterValidUsernameAndPassword(String username, String password) {
+	  //MainStuff.goToTheHomePage();
 	  AccountStuff.validLogIn(username, password);
       
   }
