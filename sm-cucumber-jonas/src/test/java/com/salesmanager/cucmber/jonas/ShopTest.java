@@ -27,10 +27,10 @@ import java.net.URL;
 import java.util.concurrent.TimeUnit;
 public class ShopTest {
 	//WebDriver driver;
-	private WebDriver driver;
+	private RemoteWebDriver driver;
 	private String baseUrl;
 	
-	@Before("@selenium")
+	@Before("@Selenium")
 	public void setUp() throws Throwable {
 		DesiredCapabilities capability = DesiredCapabilities.firefox();
 		capability.setBrowserName("firefox");
