@@ -38,30 +38,32 @@ public class TestSteps {
 //		driver = new FirefoxDriver();
 //		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 
-				DesiredCapabilities capability = DesiredCapabilities.firefox();
-				capability.setBrowserName("firefox");
-				driver = new RemoteWebDriver( new URL("http://dockerselenium.azurewebsites.net/wd/hub"), capability);
+//				DesiredCapabilities capability = DesiredCapabilities.firefox();
+//				capability.setBrowserName("firefox");
+//				driver = new RemoteWebDriver( new URL("http://dockerselenium.azurewebsites.net/wd/hub"), capability);
+//				driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+//				driver.manage().window().setSize(new Dimension(1920,1080));
+
+				DesiredCapabilities capability = DesiredCapabilities.chrome();
+				capability.setBrowserName("chrome");
+				driver = new RemoteWebDriver( new URL("http://chrome.azurewebsites.net/wd/hub"), capability);
 				driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 				driver.manage().window().setSize(new Dimension(1920,1080));
-
-		//		DesiredCapabilities capability = DesiredCapabilities.chrome();
-		//		capability.setBrowserName("chrome");
-		//		driver = new RemoteWebDriver( new URL("http://chrome.azurewebsites.net/wd/hub"), capability);
-		//		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-		//		driver.manage().window().setSize(new Dimension(1920,1080));
 	}
 
 
 	@Given("^I am on the start page$")
 	public void i_am_on_the_start_page() throws Throwable {
 		driver.get("http://jenkins2017.westeurope.cloudapp.azure.com:8080/shop");
+		//driver.get("http://shopizer.azurewebsites.net/shop/customer/logout");
 	}
 
 	@When("^I add a book$")
 	public void i_add_a_book() throws Throwable {
-		WebElement element = driver.findElement(By.xpath("/html/body/div/div[2]/div[3]/div[2]/div/div[1]/div/div[1]/a"));
+		//WebElement element = driver.findElement(By.xpath("/html/body/div/div[2]/div[3]/div[2]/div/div[1]/div/div[1]/a"));
+		WebElement element = driver.findElement(By.xpath(".//*[@id='pageContainer']/div[2]/div[3]/div[2]/div/div[3]/div/div[1]/a"));
 		Actions builder = new Actions(driver);
-		Action mouseOverBook = builder.moveToElement(element).build();
+		Action mouseOverBook = builder.moveToElement(element,0,0).build();
 		mouseOverBook.perform();
 
 		(new WebDriverWait(driver, 20)).until(ExpectedConditions.visibilityOf(driver.findElement(By.xpath(".//*[@productid='1']"))));
@@ -82,9 +84,8 @@ public class TestSteps {
 		driver.findElement(By.id("open-cart")).click();
 
 		WebElement rwe;
-		//rwe = ((new WebDriverWait(driver, 10)).until(ExpectedConditions.visibilityOf(driver.findElement(By.xpath(".//*[@id='1']/td[2]")))));
+		//rwe = ((new WebDriverWait(driver, 10)).until(ExpectedConditions.visibilityOf(driver.findElement(By.xpath(".//*[@id='6']/td[2]")))));
 		rwe = ((new WebDriverWait(driver, 10)).until(ExpectedConditions.visibilityOf(driver.findElement(By.id("miniCartDetails")))));
-
 
 		assertTrue(rwe!=null);
 	}
@@ -93,8 +94,9 @@ public class TestSteps {
 	@When("^I click check out$")
 	public void i_click_check_out() throws Throwable {
 
-		WebElement element = driver.findElement(By.partialLinkText("Checkout"));
-		element.click();
+//		WebElement element = driver.findElement(By.partialLinkText("Checkout"));
+//		element.click();
+		driver.findElement(By.xpath("//*[@id='miniCartDetails']/li/div/a")).click();
 
 	}
 
