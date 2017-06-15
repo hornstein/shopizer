@@ -51,35 +51,35 @@ import com.salesmanager.core.model.reference.language.Language;
 import com.salesmanager.core.model.reference.zone.Zone;
 
 
-//@Ignore
+@Ignore
 public class OrderTest extends com.salesmanager.test.common.AbstractSalesManagerCoreTestCase {
 
 
-	
+
 
 	@Test
 	public void getMerchantOrders() throws ServiceException {
-		
+
 
 
 		Currency currency = currencyService.getByCode(USD_CURRENCY_CODE);
 		Country country = countryService.getByCode("US");
 		Zone zone = zoneService.getByCode("VT");
 		Language en = languageService.getByCode("en");
-		
-		MerchantStore merchant = merchantService.getByCode( MerchantStore.DEFAULT_STORE );	
-	
+
+		MerchantStore merchant = merchantService.getByCode( MerchantStore.DEFAULT_STORE );
+
 		/** Create a customer **/
-		Customer customer = new Customer();	
+		Customer customer = new Customer();
 		customer.setMerchantStore(merchant);
 		customer.setDefaultLanguage(en);
 		customer.setEmailAddress("email@email.com");
 		customer.setPassword("-1999");
 		customer.setNick("My New nick");
-		customer.setCompany(" Apple");	
+		customer.setCompany(" Apple");
 		customer.setGender(CustomerGender.M);
-		customer.setDateOfBirth(new Date());		
-		
+		customer.setDateOfBirth(new Date());
+
 		Billing billing = new Billing();
 	    billing.setAddress("Billing address");
 	    billing.setCity("Billing city");
@@ -90,22 +90,22 @@ public class OrderTest extends com.salesmanager.test.common.AbstractSalesManager
 	    billing.setPostalCode("Billing postal code");
 	    billing.setState("Billing state");
 	    billing.setZone(zone);
-	    
+
 	    Delivery delivery = new Delivery();
 	    delivery.setAddress("Shipping address");
 	    delivery.setCountry(country);
-	    delivery.setZone(zone);	    
-	    
+	    delivery.setZone(zone);
+
 	    customer.setBilling(billing);
 	    customer.setDelivery(delivery);
-	    
-		customerService.create(customer);	
-		
-		
+
+		customerService.create(customer);
+
+
 		//create a product with attributes
 
 	    /** CATALOG CREATION **/
-	    
+
 	    ProductType generalType = productTypeService.getProductType(ProductType.GENERAL_TYPE);
 
 	    /**
@@ -126,8 +126,8 @@ public class OrderTest extends com.salesmanager.test.common.AbstractSalesManager
 
 	    shirts.setDescriptions(descriptions);
 	    categoryService.create(shirts);
-	    
-	    
+
+
 	    /**
 	     * Create a manufacturer
 	     */
@@ -142,7 +142,7 @@ public class OrderTest extends com.salesmanager.test.common.AbstractSalesManager
 	    addidas.getDescriptions().add(addidasDesc);
 
 	    manufacturerService.create(addidas);
-	    
+
 	    /**
 	     * Create an option
 	     */
@@ -150,50 +150,50 @@ public class OrderTest extends com.salesmanager.test.common.AbstractSalesManager
 	    option.setMerchantStore(merchant);
 	    option.setCode("color");
 	    option.setProductOptionType(ProductOptionType.Radio.name());
-	    
+
 	    ProductOptionDescription optionDescription = new ProductOptionDescription();
 	    optionDescription.setLanguage(en);
 	    optionDescription.setName("Color");
 	    optionDescription.setDescription("Item color");
 	    optionDescription.setProductOption(option);
-	    
+
 	    option.getDescriptions().add(optionDescription);
-	    
+
 	    productOptionService.saveOrUpdate(option);
-	    
-	    
+
+
 	    /** first option value **/
 	    ProductOptionValue white = new ProductOptionValue();
 	    white.setMerchantStore(merchant);
 	    white.setCode("white");
-	    
+
 	    ProductOptionValueDescription whiteDescription = new ProductOptionValueDescription();
 	    whiteDescription.setLanguage(en);
 	    whiteDescription.setName("White");
 	    whiteDescription.setDescription("White color");
 	    whiteDescription.setProductOptionValue(white);
-	    
+
 	    white.getDescriptions().add(whiteDescription);
-	    
+
 	    productOptionValueService.saveOrUpdate(white);
-	    
-	    
+
+
 	    ProductOptionValue black = new ProductOptionValue();
 	    black.setMerchantStore(merchant);
 	    black.setCode("black");
-	    
+
 	    /** second option value **/
 	    ProductOptionValueDescription blackDesc = new ProductOptionValueDescription();
 	    blackDesc.setLanguage(en);
 	    blackDesc.setName("Black");
 	    blackDesc.setDescription("Black color");
 	    blackDesc.setProductOptionValue(black);
-	    
+
 	    black.getDescriptions().add(blackDesc);
 
 	    productOptionValueService.saveOrUpdate(black);
-	    
-	    
+
+
 	    /**
 	     * Create a complex product
 	     */
@@ -214,22 +214,22 @@ public class OrderTest extends com.salesmanager.test.common.AbstractSalesManager
 
 	    product.getDescriptions().add(description);
 	    product.getCategories().add(shirts);
-	    
-	    
+
+
 	    //availability
 	    ProductAvailability availability = new ProductAvailability();
 	    availability.setProductDateAvailable(new Date());
 	    availability.setProductQuantity(100);
 	    availability.setRegion("*");
 	    availability.setProduct(product);// associate with product
-	    
+
 	    //price
 	    ProductPrice dprice = new ProductPrice();
 	    dprice.setDefaultPrice(true);
 	    dprice.setProductPriceAmount(new BigDecimal(29.99));
 	    dprice.setProductAvailability(availability);
-	    
-	    
+
+
 
 	    ProductPriceDescription dpd = new ProductPriceDescription();
 	    dpd.setName("Base price");
@@ -239,8 +239,8 @@ public class OrderTest extends com.salesmanager.test.common.AbstractSalesManager
 	    dprice.getDescriptions().add(dpd);
 	    availability.getPrices().add(dprice);
 	    product.getAvailabilities().add(availability);
-	    
-	    
+
+
 	    //attributes
 	    //white
 	    ProductAttribute whiteAttribute = new ProductAttribute();
@@ -251,7 +251,7 @@ public class OrderTest extends com.salesmanager.test.common.AbstractSalesManager
 	    whiteAttribute.setProductAttributeWeight(new BigDecimal(0));//no weight variation
 	    whiteAttribute.setProductOption(option);
 	    whiteAttribute.setProductOptionValue(white);
-	    
+
 	    product.getAttributes().add(whiteAttribute);
 	    //black
 	    ProductAttribute blackAttribute = new ProductAttribute();
@@ -261,19 +261,19 @@ public class OrderTest extends com.salesmanager.test.common.AbstractSalesManager
 	    blackAttribute.setProductAttributeWeight(new BigDecimal(0));//no weight variation
 	    blackAttribute.setProductOption(option);
 	    blackAttribute.setProductOptionValue(black);
-	    
+
 	    product.getAttributes().add(blackAttribute);
 
 	    productService.create(product);
 
-			
 
-		
+
+
 		/** Create an order **/
 		Order order = new Order();
-		
 
-		
+
+
 		/** payment details **/
 		CreditCard creditCard = new CreditCard();
 		creditCard.setCardType(CreditCardType.VISA);
@@ -283,7 +283,7 @@ public class OrderTest extends com.salesmanager.test.common.AbstractSalesManager
 		creditCard.setCcNumber( "123456789");
 		creditCard.setCcOwner("ccOwner" );
 		order.setCreditCard(creditCard);
-		
+
 		/** order core attributes **/
 		order.setDatePurchased(new Date());
 		order.setCurrency(currency);
@@ -294,7 +294,7 @@ public class OrderTest extends com.salesmanager.test.common.AbstractSalesManager
 		order.setDelivery(delivery);
 		order.setIpAddress("ipAddress" );
 		order.setMerchant(merchant);
-		order.setOrderDateFinished(new Date());		
+		order.setOrderDateFinished(new Date());
 
 		order.setPaymentType(PaymentType.CREDITCARD);
 		order.setPaymentModuleCode("payment Module Code");
@@ -304,99 +304,99 @@ public class OrderTest extends com.salesmanager.test.common.AbstractSalesManager
 		order.setConfirmedAddress(true);
 		order.setTotal(dprice.getProductPriceAmount());
 		order.setCustomerEmailAddress(customer.getEmailAddress());
-		
+
 		order.setBilling(billing);
 		order.setDelivery(delivery);
-		
-		
+
+
 		/** ORDER PRODUCT **/
-		
+
 		//OrderProduct
 		OrderProduct oproduct = new OrderProduct();
 		oproduct.setDownloads(null);
 		oproduct.setOneTimeCharge(dprice.getProductPriceAmount());
-		oproduct.setOrder(order);		
+		oproduct.setOrder(order);
 		oproduct.setProductName( description.getName() );
 		oproduct.setProductQuantity(1);
 		oproduct.setSku(product.getSku());
-		
+
 		//set order product price
 		OrderProductPrice orderProductPrice = new OrderProductPrice();
 		orderProductPrice.setDefaultPrice(true);//default price (same as default product price)
 		orderProductPrice.setOrderProduct(oproduct);
 		orderProductPrice.setProductPrice(dprice.getProductPriceAmount());
 		orderProductPrice.setProductPriceCode(ProductPriceType.ONE_TIME.name());
-		
-		
+
+
 		oproduct.getPrices().add(orderProductPrice);
-		
+
 		//order product attribute
-		
+
 		OrderProductAttribute orderProductAttribute = new OrderProductAttribute();
 		orderProductAttribute.setOrderProduct(oproduct);
 		orderProductAttribute.setProductAttributePrice(new BigDecimal("0.00"));//no extra charge
 		orderProductAttribute.setProductAttributeName(whiteDescription.getName());
 		orderProductAttribute.setProductOptionId(option.getId());
 		orderProductAttribute.setProductOptionValueId(white.getId());
-		
+
 		oproduct.getOrderAttributes().add(orderProductAttribute);
-		
+
 		order.getOrderProducts().add(oproduct);
-		
+
 		/** ORDER TOTAL **/
-		
+
 		OrderTotal subTotal = new OrderTotal();
 		subTotal.setOrder(order);
 		subTotal.setOrderTotalCode(Constants.OT_SUBTOTAL_MODULE_CODE);
 		subTotal.setSortOrder(0);
 		subTotal.setTitle("Sub Total");
 		subTotal.setValue(dprice.getProductPriceAmount());
-		
+
 		order.getOrderTotal().add(subTotal);
-		
-		
+
+
 		OrderTotal total = new OrderTotal();
 		total.setOrder(order);
 		total.setOrderTotalCode(Constants.OT_TOTAL_MODULE_CODE);
 		total.setSortOrder(1);
 		total.setTitle("Total");
 		total.setValue(dprice.getProductPriceAmount());
-		
+
 		order.getOrderTotal().add(total);
 
-		
-		
-		
+
+
+
 		/** ORDER HISTORY **/
-		
+
 		//create a log entry in order history
 		OrderStatusHistory history = new OrderStatusHistory();
 		history.setOrder(order);
 		history.setDateAdded(new Date());
 		history.setStatus(OrderStatus.ORDERED);
 		history.setComments("We received your order");
-		
+
 		order.getOrderHistory().add(history);
-		
+
 		/** CREATE ORDER **/
-		
+
 		orderService.create(order);
-		
-		
+
+
 		/** SEARCH ORDERS **/
 
 		OrderCriteria criteria = new OrderCriteria();
 		criteria.setStartIndex(0);
 		criteria.setMaxCount(10);
-	
+
 		OrderList ordserList = orderService.listByStore(merchant, criteria);
 
-		
+
 		Assert.assertNotNull(ordserList);
 		Assert.assertTrue("Merchant Orders are null." , ordserList.getOrders() != null);
 		Assert.assertTrue("Merchant Orders count is not one." , (ordserList.getOrders() != null && ordserList.getOrders().size() == 1) );
 	}
-	
+
 
 
 }
