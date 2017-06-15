@@ -74,6 +74,18 @@ public void setup2(){
 		 assertEquals("The Big Switch", driver.getTitle());
 	}
 
-	
+	@When("^I click on the cart$")
+	public void i_click_on_the_cart() throws Throwable {
+		WebElement book = driver.findElement(By.xpath((".//*[@id='open-cart']")));
+		book.click();
+		WebElement cart = driver.findElement(By.id("miniCartDetails"));
+	    
+	}
+
+	@Then("^The cart details are shown$")
+	public void the_cart_details_are_shown() throws Throwable {
+	    
+	}
+
 
 }
