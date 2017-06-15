@@ -35,7 +35,7 @@ import com.salesmanager.core.model.merchant.MerchantStore;
  * @author Carl Samson
  *
  */
-//@Ignore
+@Ignore
 public class ContentImagesTest extends com.salesmanager.test.common.AbstractSalesManagerCoreTestCase {
 	
 	private static final Date date = new Date(System.currentTimeMillis());

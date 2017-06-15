@@ -1,7 +1,6 @@
 # Ignored files
 *.class
 *.jar
-*.war
 *.lst
 */target/
 *.class

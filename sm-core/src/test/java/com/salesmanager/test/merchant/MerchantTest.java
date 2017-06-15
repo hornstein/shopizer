@@ -15,7 +15,7 @@ import com.salesmanager.test.common.AbstractSalesManagerCoreTestCase;
  *
  */
 
-//@Ignore
+@Ignore
 public class MerchantTest extends AbstractSalesManagerCoreTestCase {
 	
 	
