@@ -1,44 +1,32 @@
-#Author: your.email@your.domain.com
-#Keywords Summary :
-#Feature: List of scenarios.
-#Scenario: Business rule through list of steps with arguments.
-#Given: Some precondition step
-#When: Some key actions
-#Then: To observe outcomes or validation
-#And,But: To enumerate more Given,When,Then steps
-#Scenario Outline: List of steps for data-driven as an Examples and <placeholder>
-#Examples: Container for s table
-#Background: List of steps run before each of the scenarios
-#""" (Doc Strings)
-#| (Data Tables)
-#@ (Tags/Labels):To group Scenarios 
-#<> (placeholder)
-#""
-## (Comments)
+@selenium
+Feature: Contact shopizer
+  IN ORDER TO send my contact request
+  AS A Custmer
+  I WANT TO be able to fill out the contact form
 
-#Sample Feature Definition Template
-@tag
-Feature: Title of your feature
-	 I want to use this template for my feature file
+  @test
+  Scenario: Register new customer
+    Given the user is in home page
+    When the user enter Contact us
+    And the user remove the error
+    And the user give name "Kalle"
+    And the user give Email address "Kalle@yahoo.nu"
+    And the user give Subject "Kalle is back"
+    And the user give Coments "Kalle have a quation"
+    And the user  enter send
+    Then the user get confirmation
 
-* @tag1
-Scenario: Title of your scenario
-Given I want to write a step with precondition
-	And some other precondition
-When I complete action
-	And some other action
-	And yet another action
-Then I validate the outcomes
-	And check more outcomes */
+  Scenario: Change the amount of books
+    Given the user is in home page
+    When the user choose the book
+    And the user go to chart
+    And the user go to checkout
+    And the user chenge quantity to ten
+    Then the total price is changed
 
-
-@tag2
-Scenario Outline: Title of your scenario outline
-Given I want to write a step with <name>
-When I check for the <value> in step
-Then I verify the <status> in step
-
-Examples:
-    | name  |value | status |
-    | name1 |  5   | success|
-    | name2 |  7   | Fail   |
+  Scenario: Check Cart
+    Given the user is in the home page
+    When the user find the book
+    And the user add book to chart
+    And the user is in cahrt
+    Then the user compair if exixt
