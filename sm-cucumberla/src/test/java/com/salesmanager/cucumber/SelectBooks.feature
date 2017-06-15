@@ -9,7 +9,7 @@ Feature: I want to see if the selection of books work
 			Scenario: Select a book
 			Given I am on the startpage
 			When I select the book "The Big Switch" by clicking on it
-			Then The book is selected and put in the shopping cart
+			Then The books details are shown
 			
 			
 @Selenium
@@ -17,7 +17,7 @@ Feature: I want to see if the selection of books work
 			Scenario: Select another book
 			Given I am on the startpage
 			When I select the book "Spring in Action" by clicking on it
-			Then The book is selected and put in the shopping cart
+			Then The books details are shown
 			
 			
 @Selenium
@@ -25,4 +25,4 @@ Feature: I want to see if the selection of books work
 			Scenario: Select yet another book
 			Given I am on the startpage
 			When I select the book "Node Web Development" by clicking on it
-			Then The book is selected and put in the shopping cart
+			Then The books details are shown

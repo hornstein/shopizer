@@ -82,18 +82,19 @@ public class TestStepss {
 		book.click();
 	} 
 			//"//*[contains(@src, 'google')]"
-
-	@Then("^The book is selected and put in the shopping cart$")  //SIDAN ÄNDRADES 
-	public void the_book_is_selected_and_put_in_the_shopping_cart() throws Throwable {
-		assertEquals("The Big Switch", driver.getTitle());
-	   
-	}
 	
-	@Given("^I am on the Shopizer website$")
+	@Then("^The books details are shown$")
+	public void the_books_details_are_shown() throws Throwable {
+		assertEquals("The Big Switch", driver.getTitle());
+	    //throw new PendingException();
+	}
+
+	
+	/*@Given("^I am on the Shopizer website$")
 	public void i_am_on_the_Shopizer_website() throws Throwable {
 	    // Write code here that turns the phrase above into concrete actions
 	   // throw new PendingException();
-	}
+	}*/
 
 	@When("^I write the name of a book in the searchfield$")
 	public void i_write_the_name_of_a_book_in_the_searchfield() throws Throwable {
@@ -207,6 +208,54 @@ public class TestStepss {
 	@Then("^I remove the book from the cart again$")
 	public void i_remove_the_book_from_the_cart_again() throws Throwable {
 	    // Write code here that turns the phrase above into concrete actions
+	    //throw new PendingException();
+	}
+
+	@When("^I choose a book by adding it to the cart, open the cart and check out$")
+	public void i_choose_a_book_by_adding_it_to_the_cart_open_the_cart_and_check_out() throws Throwable {
+		WebElement book = driver.findElement(By.xpath(("//*[contains(@src, 'google')]")));
+		book.click();
+
+		Thread.sleep(3000);
+		
+		Actions actions = new Actions(driver);
+		actions.keyDown(Keys.CONTROL).sendKeys(Keys.END).perform();
+		
+		Thread.sleep(3000);
+		
+		WebElement book5 = driver.findElement(By.xpath((".//*[@id='input-6']/div/button")));
+		book5.click();
+		
+		Thread.sleep(3000);
+		
+		Actions actions2 = new Actions(driver);
+		actions2.keyUp(Keys.CONTROL).sendKeys(Keys.HOME).perform();
+	
+	WebDriverWait wait = new WebDriverWait(driver, 10);
+	wait.until(ExpectedConditions.elementToBeClickable(By.id("open-cart")));
+	
+	WebElement book7 = driver.findElement(By.id("open-cart"));
+	
+	book7.click();
+	
+	Thread.sleep(3000);
+		
+	WebElement book8 = driver.findElement(By.xpath((".//*[@id='miniCartDetails']/li/div/a")));
+		
+	book8.click();
+	
+	Thread.sleep(3000);
+
+	WebElement book9 = driver.findElement(By.id("checkoutButton"));
+	
+	book9.click();
+	
+	   // throw new PendingException();
+	}
+
+	@Then("^I am taken to the till$")
+	public void i_am_taken_to_the_till() throws Throwable {
+		assertEquals("Review your order", driver.getTitle());
 	    //throw new PendingException();
 	}
 

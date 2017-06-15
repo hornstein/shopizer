@@ -7,6 +7,6 @@ Feature: I want to be able to search for books
 			I want to be able to search for them on the website
 
 			Scenario: Use the searchfield
-			Given I am on the Shopizer website
+			Given I am on the startpage
 			When I write the name of a book in the searchfield
 			Then The book shows if it exists in the book database
