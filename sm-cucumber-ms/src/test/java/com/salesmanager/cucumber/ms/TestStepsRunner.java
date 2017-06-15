@@ -4,7 +4,7 @@ import cucumber.api.CucumberOptions;
 import cucumber.api.junit.Cucumber;
 @RunWith(Cucumber.class)
 @CucumberOptions(
-		features = "src/test/java/com/salesmanager/cucumber/"
+		features = "src/test/java/com/salesmanager/cucumber/ms/"
 		,glue={"classpath:"}
 		)
 public class TestStepsRunner {
