@@ -17,6 +17,7 @@
 ## (Comments)
 
 #Sample Feature Definition Template
+
 @tag
 Feature: Title of your feature
 	I want to use this template for my feature file
@@ -34,7 +35,7 @@ Then I validate the outcomes
 @tag2
 Scenario Outline: Title of your scenario outline
 Given I want to write a step with <name>
-When I check for the <value> in step
+When I check for the <22> in step
 Then I verify the <status> in step
 
 Examples:
