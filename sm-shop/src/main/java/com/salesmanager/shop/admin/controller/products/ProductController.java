@@ -592,6 +592,10 @@ public class ProductController {
 			availability.setProductStatus(pAvailability.getProductStatus());
 			availability.setRegion(pAvailability.getRegion());
 			availability.setRegionVariant(pAvailability.getRegionVariant());
+<<<<<<< HEAD
+=======
+			availability.setProduct(newProduct);
+>>>>>>> 2859f238d2d6bffecb4d317fd3c845ed1cd0db23
 
 
 			
@@ -691,6 +695,10 @@ public class ProductController {
 			description.setMetatagDescription(pDescription.getMetatagDescription());
 			description.setMetatagKeywords(pDescription.getMetatagKeywords());
 			description.setMetatagTitle(pDescription.getMetatagTitle());
+<<<<<<< HEAD
+=======
+			description.setProduct(newProduct);
+>>>>>>> 2859f238d2d6bffecb4d317fd3c845ed1cd0db23
 			descsset.add(description);
 			desclist.add(description);
 		}

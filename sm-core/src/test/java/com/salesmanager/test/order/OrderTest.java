@@ -64,7 +64,7 @@ public class OrderTest extends com.salesmanager.test.common.AbstractSalesManager
 
 		Currency currency = currencyService.getByCode(USD_CURRENCY_CODE);
 		Country country = countryService.getByCode("US");
-		Zone zone = zoneService.getByCode("VT");
+		Zone zone = zoneService.getByCode("VT", country);
 		Language en = languageService.getByCode("en");
 
 		MerchantStore merchant = merchantService.getByCode( MerchantStore.DEFAULT_STORE );
@@ -396,7 +396,4 @@ public class OrderTest extends com.salesmanager.test.common.AbstractSalesManager
 		Assert.assertTrue("Merchant Orders are null." , ordserList.getOrders() != null);
 		Assert.assertTrue("Merchant Orders count is not one." , (ordserList.getOrders() != null && ordserList.getOrders().size() == 1) );
 	}
-
-
-
 }

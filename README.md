@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 Shopizer 2.0.5 (for java 1.8)
+=======
+Master
+>>>>>>> 2859f238d2d6bffecb4d317fd3c845ed1cd0db23
 -------------------
 
 Java open source e-commerce software

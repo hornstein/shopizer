@@ -325,11 +325,19 @@ private static final Logger LOGGER = LoggerFactory.getLogger(OrderControler.clas
 		Zone billingZone = null;
 		Zone deliveryZone = null;
 		if(entityOrder.getOrder().getBilling().getZone()!=null) {
+<<<<<<< HEAD
 			billingZone = zoneService.getByCode(entityOrder.getOrder().getBilling().getZone().getCode());
 		}
 		
 		if(entityOrder.getOrder().getDelivery().getZone()!=null) {
 			deliveryZone = zoneService.getByCode(entityOrder.getOrder().getDelivery().getZone().getCode());
+=======
+			billingZone = zoneService.getByCode(entityOrder.getOrder().getBilling().getZone().getCode(), billingCountry);
+		}
+		
+		if(entityOrder.getOrder().getDelivery().getZone()!=null) {
+			deliveryZone = zoneService.getByCode(entityOrder.getOrder().getDelivery().getZone().getCode(), deliveryCountry);
+>>>>>>> 2859f238d2d6bffecb4d317fd3c845ed1cd0db23
 		}
 
 		newOrder.setCustomerEmailAddress(entityOrder.getOrder().getCustomerEmailAddress() );

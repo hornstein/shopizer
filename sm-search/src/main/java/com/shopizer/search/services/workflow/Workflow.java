@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 package com.shopizer.search.services.workflow;
 
 import com.shopizer.search.utils.SearchClient;
@@ -26,4 +27,34 @@ public class Workflow {
 
 
 
+=======
+package com.shopizer.search.services.workflow;
+
+import com.shopizer.search.utils.SearchClient;
+
+public class Workflow {
+
+	private SearchClient searchClient;
+
+
+
+	public SearchClient getSearchClient() {
+		return searchClient;
+	}
+
+
+
+	public void setSearchClient(SearchClient searchClient) {
+		this.searchClient = searchClient;
+	}
+
+
+
+	public Workflow() {
+		super();
+	}
+
+
+
+>>>>>>> 2859f238d2d6bffecb4d317fd3c845ed1cd0db23
 }

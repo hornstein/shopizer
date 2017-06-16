@@ -59,8 +59,8 @@ public class TestSteps {
 		wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@id='pageContainer']/div[2]/div[3]/div[2]/div/div[1]/div/div[1]/a/img")));
 		driver.findElement(By.xpath("//*[@id='pageContainer']/div[2]/div[3]/div[2]/div/div[1]/div/div[1]/a/img")).click();
 		jse.executeScript("scroll(0, 500);");
-		wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@id='input-3']/div/button")));
-		driver.findElement(By.xpath("//*[@id='input-3']/div/button")).click();
+		wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@id='input-6']/div/button")));
+		driver.findElement(By.xpath("//*[@id='input-6']/div/button")).click();
 		jse.executeScript("scroll(0, -250);");
 	}
 
@@ -71,7 +71,7 @@ public class TestSteps {
 		Thread.sleep(1000);
 		driver.findElement(By.xpath("//*[@id='miniCartDetails']/li/div/a")).click();
 		Thread.sleep(1000);
-		assertEquals("check if in cart", "Node Web Development", driver.findElement(By.xpath("//*[@id='mainCartTable']/tbody/tr[1]/td[1]/div/div[2]/span/strong")).getText());
+		assertEquals("check if in cart", "The Big Switch", driver.findElement(By.xpath("//*[@id='mainCartTable']/tbody/tr[1]/td[1]/div/div[2]/span/strong")).getText());
 	}
 
 	@Given("^I am on main page$")
@@ -98,15 +98,14 @@ public class TestSteps {
 
 	@Given("^There is an item in the cart$")
 	public void there_is_an_item_in_the_cart() {
-		driver.get("http://jenkins2017.westeurope.cloudapp.azure.com:8080/shop");
-		wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@id='pageContainer']/div[2]/div[3]/div[2]/div/div[1]/div/div[1]/a/img")));
-		driver.findElement(By.xpath("//*[@id='pageContainer']/div[2]/div[3]/div[2]/div/div[1]/div/div[1]/a/img")).click();
+		driver.get("http://jenkins2017.westeurope.cloudapp.azure.com:8080/shop/product/the-big-switch.html");
+		wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@id='shop']/section/div/div/aside/div/div/div/ul/li[1]/a")));
 		JavascriptExecutor jse = (JavascriptExecutor)driver;
 		jse.executeScript("scroll(0, 250);");
-		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='input-2']/div/button")));
-		driver.findElement(By.xpath("//*[@id='input-2']/div/button")).click();
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='input-6']/div/button")));
+		driver.findElement(By.xpath("//*[@id='input-6']/div/button")).click();
 		jse.executeScript("scroll(0, -250);");
-		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id='miniCartSummary']/font/strong")));
+		assertEquals("check if not empty", "SHOPPING CART (1)", driver.findElement(By.xpath("//*[@id='miniCartSummary']/font/strong")));
 		driver.findElement(By.xpath("//*[@id='miniCartSummary']/span")).click();
 	}
 
@@ -239,8 +238,8 @@ public class TestSteps {
 	}
 
 	@Then("^The review should be saved and displayed to me$")
-	public void the_review_should_be_saved_and_displayed_to_me() {
-		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id='store.success']")));
+	public void the_review_should_be_saved_and_displayed_to_me() throws InterruptedException {
+		Thread.sleep(3000);
 		assertEquals("check if review is successfull", "You have successfully created a product review", driver.findElement(By.xpath("//*[@id='store.success']")).getText());
 		assertEquals("check review text", "Very Good!", driver.findElement(By.xpath("//*[@id='review']/div[2]/div[1]/blockquote/p")).getText());		
 	}

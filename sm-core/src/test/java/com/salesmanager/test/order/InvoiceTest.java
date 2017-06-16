@@ -73,65 +73,65 @@ import com.salesmanager.core.model.reference.zone.Zone;
  */
 @Ignore
 public class InvoiceTest extends com.salesmanager.test.common.AbstractSalesManagerCoreTestCase {
-	
+
 	@Inject
 	ProductPriceUtils priceUtil;
 
-	@Test
+	//@Test
 	@Ignore
 	public void createInvoice() throws ServiceException {
-		
+
 
 	    MerchantStore store = merchantService.getByCode(MerchantStore.DEFAULT_STORE);
-	    
+
 		//create a product
 	    ProductType generalType = productTypeService.getProductType(ProductType.GENERAL_TYPE);
-	    
+
 	    Language en = languageService.getByCode("en");
-	    
-	    
+
+
 	    /**
 	     * 1) Create an order
-	     * 
+	     *
 	     */
-	    
+
 	    //1.1 create a product
-	    
+
 	    //create an option
 	    ProductOption color = new ProductOption();
 	    color.setMerchantStore(store);
 	    color.setCode("color");
 	    color.setProductOptionType("SELECT");
-	    
+
 	    ProductOptionDescription colorDescription = new ProductOptionDescription();
 	    colorDescription.setDescription("Color");
 	    colorDescription.setName("Color");
 	    colorDescription.setLanguage(en);
 	    colorDescription.setProductOption(color);
-	    
+
 	    Set<ProductOptionDescription> colorDescriptions = new HashSet<ProductOptionDescription>();
 	    colorDescriptions.add(colorDescription);
-	    
+
 	    color.setDescriptions(colorDescriptions);
-	    
+
 	    productOptionService.create(color);
-	    
+
 	    //create an option value
 	    ProductOptionValue red = new ProductOptionValue();
 	    red.setMerchantStore(store);
 	    red.setCode("red");
-	    
+
 	    ProductOptionValueDescription redDescription = new ProductOptionValueDescription();
 	    redDescription.setDescription("Red");
 	    redDescription.setLanguage(en);
 	    redDescription.setName("Red");
 	    redDescription.setProductOptionValue(red);
-	    
+
 	    Set<ProductOptionValueDescription> redDescriptions = new HashSet<ProductOptionValueDescription>();
 	    redDescriptions.add(redDescription);
-	    
+
 	    red.setDescriptions(redDescriptions);
-	    
+
 	    productOptionValueService.create(red);
 
 	    //create a product
@@ -151,7 +151,7 @@ public class InvoiceTest extends com.salesmanager.test.common.AbstractSalesManag
 	    description.setProduct(product);
 
 	    product.getDescriptions().add(description);
-	    
+
 
 	    // Availability
 	    ProductAvailability availability = new ProductAvailability();
@@ -159,7 +159,7 @@ public class InvoiceTest extends com.salesmanager.test.common.AbstractSalesManag
 	    availability.setProductQuantity(100);
 	    availability.setRegion("*");
 	    availability.setProduct(product);// associate with product
-	    
+
 	    product.getAvailabilities().add(availability);
 
 	    //price
@@ -174,36 +174,36 @@ public class InvoiceTest extends com.salesmanager.test.common.AbstractSalesManag
 	    dpd.setLanguage(en);
 
 	    dprice.getDescriptions().add(dpd);
-	    
-	    
+
+
 	    //create an attribute
 	    ProductAttribute colorAttribute = new ProductAttribute();
 	    colorAttribute.setProduct(product);
 	    colorAttribute.setProductAttributePrice(new BigDecimal(5));
 	    colorAttribute.setProductOption(color);
 	    colorAttribute.setProductOptionValue(red);
-	    
+
 
 	    product.getAttributes().add(colorAttribute);
-	    
+
 	    productService.create(product);
-	    
+
 
 	    //1.2 create a Customer
 		Country country = countryService.getByCode("CA");
-		Zone zone = zoneService.getByCode("QC");
-		
+		Zone zone = zoneService.getByCode("QC", country);
+
 		Customer customer = new Customer();
 		customer.setMerchantStore(store);
 		customer.setEmailAddress("test@test.com");
-		customer.setGender(CustomerGender.M);				
+		customer.setGender(CustomerGender.M);
 		customer.setAnonymous(true);
 		customer.setCompany("ifactory");
 		customer.setDateOfBirth(new Date());
 		customer.setNick("My nick");
 		customer.setDefaultLanguage(en);
-		
-		
+
+
 	    Delivery delivery = new Delivery();
 	    delivery.setAddress("358 Du Languadoc");
 	    delivery.setCity( "Boucherville" );
@@ -212,8 +212,8 @@ public class InvoiceTest extends com.salesmanager.test.common.AbstractSalesManag
 	    delivery.setFirstName("First" );
 	    delivery.setLastName("Last" );
 	    delivery.setPostalCode("J4B-8J9" );
-	    delivery.setZone(zone);	    
-	    
+	    delivery.setZone(zone);
+
 	    Billing billing = new Billing();
 	    billing.setAddress("358 Du Languadoc");
 	    billing.setCity("Boucherville");
@@ -224,23 +224,23 @@ public class InvoiceTest extends com.salesmanager.test.common.AbstractSalesManag
 	    billing.setLastName("Samson" );
 	    billing.setPostalCode("J4B-8J9");
 	    billing.setZone(zone);
-	    
+
 	    customer.setBilling(billing);
-	    customer.setDelivery(delivery);		
+	    customer.setDelivery(delivery);
 		customerService.create(customer);
-		
+
 		Currency currency = currencyService.getByCode(CAD_CURRENCY_CODE);
-		
+
 		//1.3 create an order
 		OrderStatusHistory orderStatusHistory = new OrderStatusHistory();
-		
-		
+
+
 		Order order = new Order();
 		order.setDatePurchased(new Date());
 		order.setCurrency(currency);
 		order.setLastModified(new Date());
 		order.setBilling(billing);
-		
+
 		Locale l = Locale.CANADA;
 		order.setLocale(l);
 
@@ -252,30 +252,30 @@ public class InvoiceTest extends com.salesmanager.test.common.AbstractSalesManag
 		order.setMerchant(store);
 		order.setCustomerEmailAddress(customer.getEmailAddress());
 		order.setOrderDateFinished(new Date());//committed date
-		
+
 		orderStatusHistory.setComments("We received your order");
 		orderStatusHistory.setCustomerNotified(1);
 		orderStatusHistory.setStatus(OrderStatus.ORDERED);
 		orderStatusHistory.setDateAdded(new Date() );
 		orderStatusHistory.setOrder(order);
-		order.getOrderHistory().add( orderStatusHistory );		
-		
+		order.getOrderHistory().add( orderStatusHistory );
+
 
 		order.setPaymentType(PaymentType.PAYPAL);
 		order.setPaymentModuleCode("paypal");
 		order.setStatus( OrderStatus.DELIVERED);
 		order.setTotal(new BigDecimal(23.99));
-		
-		
+
+
 		//OrderProductDownload - Digital download
 		OrderProductDownload orderProductDownload = new OrderProductDownload();
 		orderProductDownload.setDownloadCount(1);
-		orderProductDownload.setMaxdays(31);		
+		orderProductDownload.setMaxdays(31);
 		orderProductDownload.setOrderProductFilename("Your digital file name");
-		
+
 		//OrderProductPrice
 		OrderProductPrice oproductprice = new OrderProductPrice();
-		oproductprice.setDefaultPrice(true);	
+		oproductprice.setDefaultPrice(true);
 		oproductprice.setProductPrice(new BigDecimal(19.99) );
 		oproductprice.setProductPriceCode("baseprice" );
 		oproductprice.setProductPriceName("Base Price" );
@@ -284,13 +284,13 @@ public class InvoiceTest extends com.salesmanager.test.common.AbstractSalesManag
 		OrderProduct oproduct = new OrderProduct();
 		oproduct.getDownloads().add( orderProductDownload);
 		oproduct.setOneTimeCharge( new BigDecimal(19.99) );
-		oproduct.setOrder(order);		
+		oproduct.setOrder(order);
 		oproduct.setProductName( "Product name" );
 		oproduct.setProductQuantity(2);
-		oproduct.setSku("TB12345" );		
+		oproduct.setSku("TB12345" );
 		oproduct.getPrices().add(oproductprice ) ;
-		
-		
+
+
 		//an attribute to the OrderProduct
 		OrderProductAttribute orderAttribute = new OrderProductAttribute();
 		orderAttribute.setOrderProduct(oproduct);
@@ -299,20 +299,20 @@ public class InvoiceTest extends com.salesmanager.test.common.AbstractSalesManag
 		orderAttribute.setProductOptionId(color.getId());
 		orderAttribute.setProductOptionValueId(red.getId());
 		orderAttribute.setProductAttributePrice(colorAttribute.getProductAttributePrice());
-		
+
 		Set<OrderProductAttribute> orderAttributes = new HashSet<OrderProductAttribute>();
 		orderAttributes.add(orderAttribute);
-		
+
 		oproduct.setOrderAttributes(orderAttributes);
-		
-		oproductprice.setOrderProduct(oproduct);		
+
+		oproductprice.setOrderProduct(oproduct);
 		orderProductDownload.setOrderProduct(oproduct);
 		order.getOrderProducts().add(oproduct);
-		
-		
+
+
 		//product #2
 		OrderProductPrice oproductprice2 = new OrderProductPrice();
-		oproductprice2.setDefaultPrice(true);	
+		oproductprice2.setDefaultPrice(true);
 		oproductprice2.setProductPrice(new BigDecimal(9.99) );
 		oproductprice2.setProductPriceCode("baseprice" );
 		oproductprice2.setProductPriceName("Base Price" );
@@ -320,65 +320,65 @@ public class InvoiceTest extends com.salesmanager.test.common.AbstractSalesManag
 		//OrderProduct
 		OrderProduct oproduct2 = new OrderProduct();
 		oproduct2.setOneTimeCharge( new BigDecimal(9.99) );
-		oproduct2.setOrder(order);		
+		oproduct2.setOrder(order);
 		oproduct2.setProductName( "Additional item name" );
 		oproduct2.setProductQuantity(1);
-		oproduct2.setSku("TB12346" );		
+		oproduct2.setSku("TB12346" );
 		oproduct2.getPrices().add(oproductprice2 ) ;
-		
-		oproductprice2.setOrderProduct(oproduct2);		
-		order.getOrderProducts().add(oproduct2);
-		
-		
-		
-		
 
-		//requires 
+		oproductprice2.setOrderProduct(oproduct2);
+		order.getOrderProducts().add(oproduct2);
+
+
+
+
+
+		//requires
 		//OrderProduct
 		//OrderProductPrice
 		//OrderTotal
-		
 
-		
+
+
 		//OrderTotal
-		OrderTotal subtotal = new OrderTotal();	
-		subtotal.setModule("summary" );		
+		OrderTotal subtotal = new OrderTotal();
+		subtotal.setModule("summary" );
 		subtotal.setSortOrder(0);
 		subtotal.setText("Summary" );
 		subtotal.setTitle("Summary" );
 		subtotal.setValue(new BigDecimal(19.99 ) );
 		subtotal.setOrder(order);
-		
+
 		order.getOrderTotal().add(subtotal);
-		
-		OrderTotal tax = new OrderTotal();	
-		tax.setModule("tax" );		
+
+		OrderTotal tax = new OrderTotal();
+		tax.setModule("tax" );
 		tax.setSortOrder(1);
 		tax.setText("Tax" );
 		tax.setTitle("Tax" );
 		tax.setValue(new BigDecimal(4) );
 		tax.setOrder(order);
-		
+
 		order.getOrderTotal().add(tax);
-		
-		OrderTotal total = new OrderTotal();	
-		total.setModule("total" );		
+
+		OrderTotal total = new OrderTotal();
+		total.setModule("total" );
 		total.setSortOrder(2);
 		total.setText("Total" );
 		total.setTitle("Total" );
 		total.setValue(new BigDecimal(23.99) );
 		total.setOrder(order);
-		
+
 		order.getOrderTotal().add(total);
-		
+
 		orderService.create(order);
 		Assert.assertTrue(orderService.count() == 1);
-		
+
 		Locale locale = Locale.ENGLISH;
-		
-		
+
+
 		order = orderService.getById(order.getId());
-		
+
 		/**
 		 * 2 Create an invoice
 		 */
@@ -386,17 +386,17 @@ public class InvoiceTest extends com.salesmanager.test.common.AbstractSalesManag
 			URL resource = getClass().getResource("/templates/invoice/invoice.ods");
 			File file = new File(resource.toURI());
 			//File file = new File("templates/invoice/invoice.ods");
-		
+
 			Sheet sheet = SpreadSheet.createFromFile(file).getSheet(0);
-			
-			
-			//Store name 
+
+
+			//Store name
 			sheet.setValueAt(store.getStorename(), 0, 0);
-			
+
 			store.setStoreaddress("2001 zoo avenue");
 			store.setCurrencyFormatNational(true);//use $ instead of USD
-			
-			
+
+
 			//Address
 			//count store address cell
 			int storeAddressCell = 2;
@@ -404,7 +404,7 @@ public class InvoiceTest extends com.salesmanager.test.common.AbstractSalesManag
 			//	sheet.setValueAt(store.getStoreaddress(), 0, storeAddressCell);
 			//	storeAddressCell ++;
 			//}
-			
+
 			//3
 			StringBuilder storeAddress = null;
 			if(!StringUtils.isBlank(store.getStoreaddress())) {
@@ -423,7 +423,7 @@ public class InvoiceTest extends com.salesmanager.test.common.AbstractSalesManag
 				sheet.setValueAt(storeAddress.toString(), 0, storeAddressCell);
 				storeAddressCell ++;
 			}
-			
+
 			//4
 			StringBuilder storeProvince = null;
 			if(store.getZone()!=null) {
@@ -435,7 +435,7 @@ public class InvoiceTest extends com.salesmanager.test.common.AbstractSalesManag
 						break;
 					}
 				}
-				
+
 			} else {
 				if(!StringUtils.isBlank(store.getStorestateprovince())) {
 					storeProvince = new StringBuilder();
@@ -455,24 +455,24 @@ public class InvoiceTest extends com.salesmanager.test.common.AbstractSalesManag
 				} else {
 					storeProvince.append(store.getCountry().getIsoCode());
 				}
-				
+
 			}
 			if(storeProvince!=null) {
 				sheet.setValueAt(storeProvince.toString(), 0, storeAddressCell);
 				storeAddressCell ++;
 			}
-			
+
 			//5
 			if(!StringUtils.isBlank(store.getStorepostalcode())) {
 				sheet.setValueAt(store.getStorepostalcode(), 0, storeAddressCell);
 				storeAddressCell ++;
 			}
-			
+
 			//6
 			if(!StringUtils.isBlank(store.getStorephone())) {
 				sheet.setValueAt(store.getStorephone(), 0, storeAddressCell);
 			}
-			
+
 			//delete address blank lines
 			for(int i = storeAddressCell; i<5; i++) {
 				sheet.setValueAt("", 0, i);
@@ -481,10 +481,10 @@ public class InvoiceTest extends com.salesmanager.test.common.AbstractSalesManag
 			//invoice date
 			SimpleDateFormat format = new SimpleDateFormat(Constants.DEFAULT_DATE_FORMAT);
 			sheet.setValueAt(format.format(order.getDatePurchased()), 3, 2);
-			
+
 			//invoice number
 			sheet.setValueAt(order.getId(), 3, 3);
-			
+
 			//bill to
 			//count bill to address cell
 			int billToCell = 8;
@@ -492,13 +492,13 @@ public class InvoiceTest extends com.salesmanager.test.common.AbstractSalesManag
 				sheet.setValueAt(customer.getBilling().getFirstName() + " " + customer.getBilling().getLastName(), 0, billToCell);
 				billToCell ++;
 			}
-			
+
 			//9
 			if(!StringUtils.isBlank(customer.getBilling().getCompany())) {
 				sheet.setValueAt(customer.getBilling().getCompany(), 0, billToCell);
 				billToCell ++;
 			}
-			
+
 			//10
 			StringBuilder billToAddress = null;
 			if(!StringUtils.isBlank(customer.getBilling().getAddress())) {
@@ -517,7 +517,7 @@ public class InvoiceTest extends com.salesmanager.test.common.AbstractSalesManag
 				sheet.setValueAt(billToAddress.toString(), 0, billToCell);
 				billToCell ++;
 			}
-			
+
 			//11
 			StringBuilder billToProvince = null;
 			if(customer.getBilling().getZone()!=null) {
@@ -529,7 +529,7 @@ public class InvoiceTest extends com.salesmanager.test.common.AbstractSalesManag
 						break;
 					}
 				}
-				
+
 			} else {
 				if(!StringUtils.isBlank(customer.getBilling().getState())) {
 					billToProvince = new StringBuilder();
@@ -549,34 +549,34 @@ public class InvoiceTest extends com.salesmanager.test.common.AbstractSalesManag
 				} else {
 					billToProvince.append(customer.getBilling().getCountry().getIsoCode());
 				}
-				
+
 			}
 			if(billToProvince!=null) {
 				sheet.setValueAt(billToProvince.toString(), 0, billToCell);
 				billToCell ++;
 			}
-			
+
 			//12
 			if(!StringUtils.isBlank(customer.getBilling().getPostalCode())) {
 				sheet.setValueAt(customer.getBilling().getPostalCode(), 0, billToCell);
 				billToCell ++;
 			}
-			
+
 			//13
 			if(!StringUtils.isBlank(customer.getBilling().getTelephone())) {
 				sheet.setValueAt(customer.getBilling().getTelephone(), 0, billToCell);
 			}
-			
+
 			//delete address blank lines
 			for(int i = billToCell; i<13; i++) {
 				sheet.setValueAt("", 0, i);
 			}
-			
+
 			//products
 			Set<OrderProduct> orderProducts = order.getOrderProducts();
 			int productCell = 16;
 			for(OrderProduct orderProduct : orderProducts) {
-				
+
 				//product name
 				String pName = orderProduct.getProductName();
 				Set<OrderProductAttribute> oAttributes = orderProduct.getOrderAttributes();
@@ -591,23 +591,23 @@ public class InvoiceTest extends com.salesmanager.test.common.AbstractSalesManag
 					attributeName.append(oProductAttribute.getProductAttributeName())
 					.append(": ")
 					.append(oProductAttribute.getProductAttributeValueName());
-					
+
 				}
-				
-				
+
+
 				StringBuilder productName = new StringBuilder();
 				productName.append(pName);
-				
+
 				if(attributeName!=null) {
 					attributeName.append("]");
 					productName.append(" ").append(attributeName.toString());
 				}
-				
-				
-				
-				
+
+
+
+
 				sheet.setValueAt(productName.toString(), 0, productCell);
-				
+
 				int quantity = orderProduct.getProductQuantity();
 				sheet.setValueAt(quantity, 1, productCell);
 				String amount = priceUtil.getStoreFormatedAmountWithCurrency(store, orderProduct.getOneTimeCharge());
@@ -616,31 +616,31 @@ public class InvoiceTest extends com.salesmanager.test.common.AbstractSalesManag
 				sheet.setValueAt(t, 3, productCell);
 
 				productCell++;
-				
+
 			}
-			
+
 			//print totals
 			productCell++;
 			Set<OrderTotal> totals = order.getOrderTotal();
 			for(OrderTotal orderTotal : totals) {
-				
+
 				String totalName = orderTotal.getText();
 				String totalValue = priceUtil.getStoreFormatedAmountWithCurrency(store,orderTotal.getValue());
 				sheet.setValueAt(totalName, 2, productCell);
 				sheet.setValueAt(totalValue, 3, productCell);
 				productCell++;
 			}
-			
+
 			//sheet.getCellAt(0, 0).setImage(arg0)
 			//sheet.getCellAt(0, 0).setStyleName(arg0)
 			//sheet.getCellAt(0, 0).getStyle().
-			
-			
-			
+
+
+
 			File outputFile = new File(order.getId() + "_invoice.ods");
 			OOUtils.open(sheet.getSpreadSheet().saveAs(outputFile));
-			
-			
+
+
 			final OpenDocument doc = new OpenDocument();
 			doc.loadFrom(order.getId() + "_invoice.ods");
 
@@ -658,7 +658,7 @@ public class InvoiceTest extends com.salesmanager.test.common.AbstractSalesManag
 
 			 document.open();
 
-			 // Create a template and a Graphics2D object 
+			 // Create a template and a Graphics2D object
 			 Rectangle pageSize = document.getPageSize();
 			 int w = (int) (pageSize.getWidth() * 0.9);
 			 int h = (int) (pageSize.getHeight() * 0.95);
@@ -668,7 +668,7 @@ public class InvoiceTest extends com.salesmanager.test.common.AbstractSalesManag
 			 Graphics2D g2 = tp.createPrinterGraphics(w, h, null);
 			 // If you want to prevent copy/paste, you can use
 			 // g2 = tp.createGraphicsShapes(w, h, true, 0.9f);
-			            
+
 			 tp.setWidth(w);
 			 tp.setHeight(h);
 
@@ -676,7 +676,7 @@ public class InvoiceTest extends com.salesmanager.test.common.AbstractSalesManag
 			 ODTRenderer renderer = new ODTRenderer(doc);
 			 renderer.setIgnoreMargins(true);
 			 renderer.setPaintMaxResolution(true);
-			            
+
 			 // Scale the renderer to fit width
 			 renderer.setResizeFactor(renderer.getPrintWidth() / w);
 			 // Render
@@ -689,17 +689,14 @@ public class InvoiceTest extends com.salesmanager.test.common.AbstractSalesManag
 			 cb.addTemplate(tp, offsetX, offsetY);
 			 // Close the PDF document
 			 document.close();
-			 
+
 			 outputFile.delete();//remove temp file
-			
+
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-		
-	}
-	
-	
 
+
+	}
 }

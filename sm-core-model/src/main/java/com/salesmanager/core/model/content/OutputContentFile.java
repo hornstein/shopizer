@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 package com.salesmanager.core.model.content;
 
 import java.io.ByteArrayOutputStream;
@@ -23,4 +24,31 @@ public class OutputContentFile extends StaticContentFile implements Serializable
         this.file = file;
     }
     
+=======
+package com.salesmanager.core.model.content;
+
+import java.io.ByteArrayOutputStream;
+import java.io.Serializable;
+
+/**
+ * Data class responsible for carrying out static content data from Infispan cache to 
+ * service layer.
+ * 
+ * @author Umesh Awasthi
+ * @since 1.2
+ */
+public class OutputContentFile extends StaticContentFile implements Serializable
+{
+    private static final long serialVersionUID = 1L;
+    private ByteArrayOutputStream file;
+    public ByteArrayOutputStream getFile()
+    {
+        return file;
+    }
+    public void setFile( ByteArrayOutputStream file )
+    {
+        this.file = file;
+    }
+    
+>>>>>>> 2859f238d2d6bffecb4d317fd3c845ed1cd0db23
 }

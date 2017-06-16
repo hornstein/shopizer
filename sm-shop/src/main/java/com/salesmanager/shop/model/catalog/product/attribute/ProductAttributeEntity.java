@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 package com.salesmanager.shop.model.catalog.product.attribute;
 
 import java.io.Serializable;
@@ -41,3 +42,48 @@ public class ProductAttributeEntity extends ProductAttribute implements Serializ
 		return attributeDefault;
 	}
 }
+=======
+package com.salesmanager.shop.model.catalog.product.attribute;
+
+import java.io.Serializable;
+import java.math.BigDecimal;
+
+public class ProductAttributeEntity extends ProductAttribute implements Serializable {
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private BigDecimal productAttributePrice;
+	private int sortOrder;
+	private BigDecimal productAttributeWeight;
+	private boolean attributeDefault=false;
+
+
+
+	public void setProductAttributePrice(BigDecimal productAttributePrice) {
+		this.productAttributePrice = productAttributePrice;
+	}
+	public BigDecimal getProductAttributePrice() {
+		return productAttributePrice;
+	}
+	public void setSortOrder(int sortOrder) {
+		this.sortOrder = sortOrder;
+	}
+	public int getSortOrder() {
+		return sortOrder;
+	}
+	public void setProductAttributeWeight(BigDecimal productAttributeWeight) {
+		this.productAttributeWeight = productAttributeWeight;
+	}
+	public BigDecimal getProductAttributeWeight() {
+		return productAttributeWeight;
+	}
+	public void setAttributeDefault(boolean attributeDefault) {
+		this.attributeDefault = attributeDefault;
+	}
+	public boolean isAttributeDefault() {
+		return attributeDefault;
+	}
+}
+>>>>>>> 2859f238d2d6bffecb4d317fd3c845ed1cd0db23
