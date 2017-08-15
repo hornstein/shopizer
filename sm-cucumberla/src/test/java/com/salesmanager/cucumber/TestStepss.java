@@ -47,7 +47,8 @@ public class TestStepss {
 	
 	@When("^I click on the Default store button$")
 	public void i_click_on_the_Default_store_button() throws Throwable {
-	    // Write code here that turns the phrase above into concrete actions		WebElement book2 = driver.findElement(By.xpath((".//*[@id='site-branding']/div/h1/a")));
+	    // Write code here that turns the phrase above into concrete actions		
+WebElement book2 = driver.findElement(By.xpath((".//*[@id='site-branding']/div/h1/a")));
 		book2.click();
 
 	    //throw new PendingException(); ta bort pendingexception när jag e färdig!
@@ -72,7 +73,7 @@ public class TestStepss {
 	    // Write code here that turns the phrase above into concrete actions
 	    //throw new PendingException();
 	}
-	*/
+	
 
 	@When("^I select the book \"([^\"]*)\" by clicking on it$")
 	public void i_select_the_book_by_clicking_on_it(String arg1) throws Throwable {
