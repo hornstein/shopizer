@@ -36,7 +36,7 @@ public class TestStepss {
 	
 	// KOLLA ALLA OM DET FINNS ASSERTS OCH LÄGG IN PÅ THEN
 	
-/*	
+
   @Given("^I am on the startpage$")
 	public void i_am_on_the_startpage() throws Throwable {
 	    // Write code here that turns the phrase above into concrete actions
@@ -47,8 +47,7 @@ public class TestStepss {
 	
 	@When("^I click on the Default store button$")
 	public void i_click_on_the_Default_store_button() throws Throwable {
-	    // Write code here that turns the phrase above into concrete actions
-		WebElement book2 = driver.findElement(By.xpath((".//*[@id='site-branding']/div/h1/a")));
+	    // Write code here that turns the phrase above into concrete actions		WebElement book2 = driver.findElement(By.xpath((".//*[@id='site-branding']/div/h1/a")));
 		book2.click();
 
 	    //throw new PendingException(); ta bort pendingexception när jag e färdig!
@@ -89,7 +88,7 @@ public class TestStepss {
 	    //throw new PendingException();
 	}
 
-	/*
+	
 	@Given("^I am on the Shopizer website$")
 	public void i_am_on_the_Shopizer_website() throws Throwable {
 	    // Write code here that turns the phrase above into concrete actions
@@ -258,5 +257,5 @@ public class TestStepss {
 		assertEquals("Review your order", driver.getTitle());
 	    //throw new PendingException();
 	}
-*/
+
 }
