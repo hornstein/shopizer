@@ -36,7 +36,7 @@ public class TestStepss {
 	
 	// KOLLA ALLA OM DET FINNS ASSERTS OCH LÄGG IN PÅ THEN
 	
-/*	
+	
   @Given("^I am on the startpage$")
 	public void i_am_on_the_startpage() throws Throwable {
 	    // Write code here that turns the phrase above into concrete actions
@@ -73,7 +73,7 @@ public class TestStepss {
 	    // Write code here that turns the phrase above into concrete actions
 	    //throw new PendingException();
 	}
-	*/
+	
 
 	@When("^I select the book \"([^\"]*)\" by clicking on it$")
 	public void i_select_the_book_by_clicking_on_it(String arg1) throws Throwable {
@@ -89,7 +89,7 @@ public class TestStepss {
 	    //throw new PendingException();
 	}
 
-	/*
+	
 	@Given("^I am on the Shopizer website$")
 	public void i_am_on_the_Shopizer_website() throws Throwable {
 	    // Write code here that turns the phrase above into concrete actions
@@ -258,5 +258,5 @@ public class TestStepss {
 		assertEquals("Review your order", driver.getTitle());
 	    //throw new PendingException();
 	}
-*/
+
 }
