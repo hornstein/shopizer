@@ -30,3 +30,11 @@ Feature: Contact shopizer
     And the user add book to chart
     And the user is in cahrt
     Then the user compair if exixt
+
+  Scenario: CONTINUE SHOPPIN
+    Given the user is in the home page
+    When the user find the book
+    And the user add book to chart
+    And the user is in cahrt
+    And the user go to checkout
+    Then the user in in th amin page;
