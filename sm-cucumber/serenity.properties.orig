@@ -1,0 +1,42 @@
+<<<<<<< HEAD
+# Define the default driver
+#webdriver.driver=phantomjs
+webdriver.driver=chrome
+# Appears at the top of the reports
+serenity.project.name = Demo Project using Serenity Screenplay and JUnit
+
+# Root package for any JUnit acceptance tests
+#serenity.test.root=net.serenitybdd.tutorials.features
+
+# Customise your riequirements hierarchy
+#serenity.requirement.types=feature, story
+
+# Run the tests without calling webdriver - useful to check your JUnit wiring
+#serenity.dry.run=true
+
+# Customise browser size
+#serenity.browser.height = 1200
+#serenity.browser.width = 1200
+
+#serenity.take.screenshots=FOR_FAILURES
+serenity.take.screenshots=AFTER_EACH_STEP
+=======
+webdriver.driver=chrome
+serenity.project.name = Shopizer Serenity Test
+
+serenity.use.unique.browser = false
+
+serenity.browser,height = 1200
+serenity.browser,width = 1200
+serenity.dry.run=false
+
+
+#serenity.test.root=com.salesmanager.cucumber.junit
+
+# How long does Serenity wait for elements that are not present on the screen to load
+webdriver.timeouts.implicitlywait = 500
+serenity.take.screenshots=AFTER_EACH_STEP
+webdriver.chrome.driver=C:\\selenium\\chromedriver.exe
+#webdriver.gecko.driver=C:\\selenium\\geckodriver.exe
+#phantomjs.binary.path=/Users/agatanoair/Desktop/phantomjs
+>>>>>>> origin/2.0.5
