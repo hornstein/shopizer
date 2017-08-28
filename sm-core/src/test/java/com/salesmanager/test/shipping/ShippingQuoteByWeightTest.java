@@ -8,7 +8,11 @@ import java.util.Set;
 
 import javax.inject.Inject;
 
+<<<<<<< HEAD
 //import org.junit.Ignore;
+=======
+import org.junit.Ignore;
+>>>>>>> origin/2.0.5
 import org.junit.Test;
 import org.springframework.util.Assert;
 
@@ -58,7 +62,11 @@ public class ShippingQuoteByWeightTest extends com.salesmanager.test.common.Abst
 	
 	//@Ignore
 	@Test
+<<<<<<< HEAD
 	public void testGetCustomShippingQuotesByWeight() throws ServiceException{
+=======
+	public void testGetCustomShippingQuotesByWeight() throws ServiceException {
+>>>>>>> origin/2.0.5
 
 	    Language en = languageService.getByCode("en");
 	    Country country = countryService.getByCode("CA");
@@ -87,9 +95,12 @@ public class ShippingQuoteByWeightTest extends com.salesmanager.test.common.Abst
 
 	    product.getDescriptions().add(description);
 	    
+<<<<<<< HEAD
 	    
 	    //productService.saveOrUpdate(product);
 	    
+=======
+>>>>>>> origin/2.0.5
 
 	    // Availability
 	    ProductAvailability availability = new ProductAvailability();
@@ -105,7 +116,15 @@ public class ShippingQuoteByWeightTest extends com.salesmanager.test.common.Abst
 	    
 
 	    //productAvailabilityService.create(availability);
+<<<<<<< HEAD
+=======
 
+	    productService.create(product);
+	    //productService.saveOrUpdate(product);
+	    
+>>>>>>> origin/2.0.5
+
+	    
 	    ProductPrice dprice = new ProductPrice();
 	    dprice.setDefaultPrice(true);
 	    dprice.setProductPriceAmount(new BigDecimal(29.99));

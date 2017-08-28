@@ -133,18 +133,39 @@
 		    <artifactId>json-simple</artifactId>
 		    <version>${simple-json-version}</version>
 		</dependency>	
-	<dependency>
-   <groupId>javax.el</groupId>
-   <artifactId>javax.el-api</artifactId>
-   <version>2.2.4</version>
-</dependency>
-<dependency>
-   <groupId>org.glassfish.web</groupId>
-   <artifactId>javax.el</artifactId>
-   <version>2.2.4</version>
-</dependency>	
+		<dependency>
+			<groupId>javax.el</groupId>
+			<artifactId>javax.el-api</artifactId>
+			<version>2.2.4</version>
+		</dependency>
+
     </dependencies>
 
+<profiles>
+      <!-- DO NOT CHANGE THE *ORDER* IN WHICH THESE PROFILES ARE DEFINED! -->
+      <profile>
+         <id>acceptance-test</id>
+         <modules>
+    	<module>sm-cucumber</module>
+         </modules>
+      </profile>
+      <profile>
+         <id>default</id>
+         <activation>
+            <activeByDefault>true</activeByDefault>
+         </activation>
+         <modules>
+	  	<module>sm-core-model</module>
+	  	<module>sm-core-modules</module>
+	  	<module>sm-core</module>
+		<module>sm-search</module>
+	  	<module>sm-shop</module>
+		<module>shopizer-canadapost</module>
+		<module>shopizer-shipping-distance-module</module>
+         </modules>
+      </profile>
+   </profiles>
+<!--   
 	<modules>
 	  	<module>sm-core-model</module>
 	  	<module>sm-core-modules</module>
@@ -153,8 +174,14 @@
 	  	<module>sm-shop</module>
 		<module>shopizer-canadapost</module>
 		<module>shopizer-shipping-distance-module</module>
+<<<<<<< HEAD
     <module>sm-cucumber-ms</module>
   </modules>
+=======
+    	<module>sm-cucumber</module>
+  </modules>
+-->
+>>>>>>> origin/2.0.5
 
     <repositories>
         <repository>
@@ -168,6 +195,7 @@
             <url>https://repository.jboss.org/nexus/content/repositories/releases</url>
         </repository>
     </repositories>
+
 
     <pluginRepositories>
         <pluginRepository>
