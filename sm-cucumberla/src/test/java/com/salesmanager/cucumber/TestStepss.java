@@ -36,7 +36,11 @@ public class TestStepss {
 	
 	// KOLLA ALLA OM DET FINNS ASSERTS OCH LÄGG IN PÅ THEN
 	
+<<<<<<< HEAD
 	
+=======
+
+>>>>>>> a1dd95f34ebec85883d01cc85a981b2a9af5de13
   @Given("^I am on the startpage$")
 	public void i_am_on_the_startpage() throws Throwable {
 	    // Write code here that turns the phrase above into concrete actions
@@ -47,8 +51,8 @@ public class TestStepss {
 	
 	@When("^I click on the Default store button$")
 	public void i_click_on_the_Default_store_button() throws Throwable {
-	    // Write code here that turns the phrase above into concrete actions
-		WebElement book2 = driver.findElement(By.xpath((".//*[@id='site-branding']/div/h1/a")));
+	    // Write code here that turns the phrase above into concrete actions		
+WebElement book2 = driver.findElement(By.xpath((".//*[@id='site-branding']/div/h1/a")));
 		book2.click();
 
 	    //throw new PendingException(); ta bort pendingexception när jag e färdig!
