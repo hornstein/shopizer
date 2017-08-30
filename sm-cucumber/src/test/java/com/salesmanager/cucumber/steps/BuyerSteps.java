@@ -43,6 +43,14 @@ public class BuyerSteps extends ScenarioSteps {
 		
 	}
 
+    @Step
+	public void click_on_cart() {
+		header.clickOnCart();
+		
+		// TODO Auto-generated method stub
+		
+	}
+
 
 
 }
