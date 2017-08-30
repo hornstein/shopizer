@@ -6,10 +6,10 @@
     <artifactId>shopizer</artifactId>
     <version>2.0.5-SNAPSHOT</version>
     <packaging>pom</packaging>
-    
+
     <name>shopizer</name>
     <url>http://maven.apache.org</url>
-    
+
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
@@ -18,11 +18,11 @@
 
 
     <properties>
-        <java.version>1.8</java.version>        
+        <java.version>1.8</java.version>
         <shopizer.version>2.0.5-SNAPSHOT</shopizer.version>
         <shopizer.search.version>2.0.5-SNAPSHOT</shopizer.search.version>
         <shopizer-canadapost.version>2.0.5-SNAPSHOT</shopizer-canadapost.version>
-		<shopizer-shipping-distance.version>2.0.5-SNAPSHOT</shopizer-shipping-distance.version>	
+		<shopizer-shipping-distance.version>2.0.5-SNAPSHOT</shopizer-shipping-distance.version>
         <jackson-version>2.7.4</jackson-version>
 
         <commons-collections4.version>4.0</commons-collections4.version>
@@ -40,7 +40,7 @@
     </properties>
 
     <dependencies>
-    
+
 <!-- 		<dependency>
    			<groupId>javax.el</groupId>
    			<artifactId>javax.el-api</artifactId>
@@ -59,14 +59,14 @@
 		    <artifactId>validation-api</artifactId>
 		    <version>1.1.0.Final</version>
 		</dependency>
-		
+
 		<!-- https://mvnrepository.com/artifact/org.apache.commons/commons-lang3 -->
 		<dependency>
 		    <groupId>org.apache.commons</groupId>
 		    <artifactId>commons-lang3</artifactId>
 		    <version>3.5</version>
 		</dependency>
-		
+
 
 		<!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
 		<dependency>
@@ -81,20 +81,20 @@
 				    <artifactId>jackson-databind</artifactId>
 				    <version>${jackson-version}</version>
 				</dependency>
-				
+
 				<dependency>
 				    <groupId>com.fasterxml.jackson.core</groupId>
 				    <artifactId>jackson-core</artifactId>
 				    <version>${jackson-version}</version>
 				</dependency>
-				 
+
 				<dependency>
 				    <groupId>com.fasterxml.jackson.core</groupId>
 				    <artifactId>jackson-annotations</artifactId>
 				    <version>${jackson-version}</version>
 				</dependency>
-						
-		
+
+
 		<!-- https://mvnrepository.com/artifact/net.sf.ehcache/ehcache -->
 		<dependency>
 		    <groupId>net.sf.ehcache</groupId>
@@ -112,40 +112,50 @@
 			<groupId>org.elasticsearch</groupId>
 			<artifactId>elasticsearch</artifactId>
 			<version>${org.elasticsearch-version}</version>
-		</dependency>	
-		
+		</dependency>
+
 		<!-- https://mvnrepository.com/artifact/javax.mail/javax.mail-api -->
 		<dependency>
 		    <groupId>javax.mail</groupId>
 		    <artifactId>javax.mail-api</artifactId>
 		</dependency>
-		
+
 		<!-- https://mvnrepository.com/artifact/javax.mail/mail -->
 		<dependency>
 		    <groupId>javax.mail</groupId>
 		    <artifactId>mail</artifactId>
 		    <version>1.4.7</version>
 		</dependency>
-		
+
 		<!-- http://mvnrepository.com/artifact/com.googlecode.json-simple/json-simple -->
 		<dependency>
 		    <groupId>com.googlecode.json-simple</groupId>
 		    <artifactId>json-simple</artifactId>
 		    <version>${simple-json-version}</version>
-		</dependency>	
-	<dependency>
-   <groupId>javax.el</groupId>
-   <artifactId>javax.el-api</artifactId>
-   <version>2.2.4</version>
-</dependency>
-<dependency>
-   <groupId>org.glassfish.web</groupId>
-   <artifactId>javax.el</artifactId>
-   <version>2.2.4</version>
-</dependency>	
+		</dependency>
+		<dependency>
+			<groupId>javax.el</groupId>
+			<artifactId>javax.el-api</artifactId>
+			<version>2.2.4</version>
+		</dependency>
+
     </dependencies>
 
-	<modules>
+<profiles>
+      <!-- DO NOT CHANGE THE *ORDER* IN WHICH THESE PROFILES ARE DEFINED! -->
+      <profile>
+         <id>acceptance-test</id>
+         <modules>
+    	<module>sm-cucumber</module>
+      <module>sm-cucumber-jonas</module>
+         </modules>
+      </profile>
+      <profile>
+         <id>default</id>
+         <activation>
+            <activeByDefault>true</activeByDefault>
+         </activation>
+         <modules>
 	  	<module>sm-core-model</module>
 	  	<module>sm-core-modules</module>
 	  	<module>sm-core</module>
@@ -153,8 +163,9 @@
 	  	<module>sm-shop</module>
 		<module>shopizer-canadapost</module>
 		<module>shopizer-shipping-distance-module</module>
-    <module>sm-cucumber-jonas</module>
-  </modules>
+         </modules>
+      </profile>
+   </profiles>
 
     <repositories>
         <repository>
@@ -169,6 +180,7 @@
         </repository>
     </repositories>
 
+
     <pluginRepositories>
         <pluginRepository>
             <id>spring-releases</id>
@@ -176,7 +188,7 @@
             <url>https://repo.spring.io/libs-release</url>
         </pluginRepository>
     </pluginRepositories>
-    
+
     <dependencyManagement>
 		<dependencies>
 
