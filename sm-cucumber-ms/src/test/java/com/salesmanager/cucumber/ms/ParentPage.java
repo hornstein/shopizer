@@ -17,7 +17,7 @@ public class ParentPage {
 	/* System.setProperty("webdriver.gecko.driver", "C:\\Users\\mohamed\\Documents\\gecko\\geckodriver.exe");
      driver = new FirefoxDriver(); */
 	DesiredCapabilities capability = DesiredCapabilities.firefox();
-	capability.setBrowserName("firefox");
+	capability.setBrowserName("chrome");
 	driver = new RemoteWebDriver( new URL("http://dockerselenium.azurewebsites.net/wd/hub"), capability);
      driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS); 
  }

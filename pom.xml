@@ -147,6 +147,7 @@
          <id>acceptance-test</id>
          <modules>
     	<module>sm-cucumber</module>
+    	<module>sm-cucumber-ms</module>
          </modules>
       </profile>
       <profile>
@@ -174,14 +175,9 @@
 	  	<module>sm-shop</module>
 		<module>shopizer-canadapost</module>
 		<module>shopizer-shipping-distance-module</module>
-<<<<<<< HEAD
-    <module>sm-cucumber-ms</module>
-  </modules>
-=======
     	<module>sm-cucumber</module>
   </modules>
 -->
->>>>>>> origin/2.0.5
 
     <repositories>
         <repository>

@@ -19,7 +19,7 @@ import java.util.concurrent.TimeUnit;
 public class MainStuff extends ParentPage{
 	
 	public static void goToTheHomePage(){
-		driver.get("http://jenkins2017.westeurope.cloudapp.azure.com:8080/shop");
+		driver.get("http://bluebottle.westeurope.cloudapp.azure.com:8080/shop");
 		assertEquals("Shopizer Demo - Default store",driver.getTitle());
 	}
 	public static void explicitWaitClickableXpath(String text){
