@@ -20,7 +20,7 @@ import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.List;
 
-@Ignore
+//@Ignore
 public class CustomerRESTControllerTest {
 	
 	private RestTemplate restTemplate;
@@ -67,7 +67,7 @@ public class CustomerRESTControllerTest {
 
 		HttpEntity<String> entity = new HttpEntity<String>(json, getHeader());
 
-		ResponseEntity response = restTemplate.postForEntity("http://localhost:8080/sm-shop/services/private/DEFAULT/customer/optionValue", entity, PersistableCustomerOptionValue.class);
+		ResponseEntity response = restTemplate.postForEntity("http://localhost:8080/services/private/DEFAULT/customer/optionValue", entity, PersistableCustomerOptionValue.class);
 
 		PersistableCustomerOptionValue optVal = (PersistableCustomerOptionValue) response.getBody();
 		System.out.println("New Option value ID : " + optVal .getId());
@@ -108,9 +108,9 @@ public class CustomerRESTControllerTest {
 
 	}
 	
-
+	
 	@Test
-	@Ignore
+	//@Ignore
 	public void getCustomers() throws Exception {
 		
 		
@@ -119,7 +119,7 @@ public class CustomerRESTControllerTest {
 		
 		HttpEntity<String> httpEntity = new HttpEntity<String>(getHeader());
 		
-		ResponseEntity<ReadableCustomer[]> response = restTemplate.exchange("http://localhost:8080/sm-shop/services/private/DEFAULT/customer", HttpMethod.GET, httpEntity, ReadableCustomer[].class);
+		ResponseEntity<ReadableCustomer[]> response = restTemplate.exchange("http://bluebottle.westeurope.cloudapp.azure.com:8080/services/private/DEFAULT/customer", HttpMethod.GET, httpEntity, ReadableCustomer[].class);
 		
 		if(response.getStatusCode() != HttpStatus.OK){
 			throw new Exception();
@@ -127,7 +127,8 @@ public class CustomerRESTControllerTest {
 			System.out.println(response.getBody().length + " Customer records found.");
 		}
 	}
-
+	
+	
 	@Test
 	@Ignore
 	public void postCustomer() throws Exception {

@@ -4,6 +4,9 @@ package org.salesmanager.cucumber;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
+import com.salesmanager.cucumber.steps.BuyerSteps;
+
 import org.openqa.selenium.remote.RemoteWebDriver;
 
 import static org.junit.Assert.assertEquals;
@@ -21,12 +24,16 @@ import cucumber.api.java.Before;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.When;
+import net.thucydides.core.annotations.Steps;
 import cucumber.api.java.en.Then;
 
 public class TestSteps {
 	
 	private WebDriver driver;
 	private String baseUrl;
+	
+	@Steps
+	BuyerSteps user;
 	
 	@Before("@Selenium")
 	public void setUp() throws Throwable {
@@ -39,31 +46,38 @@ public class TestSteps {
 	}
 	@Given("^I am at the home page on Shopizer$")
 	public void shopizer_homepage() {
-		driver.get(baseUrl + "/shop/");
+		user.opens_home_page();
+		//driver.get(baseUrl + "/shop/");
 	  }
 
 	@When("^I Click on the book The Big Switch$")
 	public void click_on_spring_in_action() {
-		WebElement button = driver.findElement(By.xpath("//*[@id='pageContainer']/div[2]/div[3]/div[2]/div/div[2]/div/div[1]/a/img"));
-		button.click();
+		user.click_on_spring_in_action();
+		
+		//WebElement button = driver.findElement(By.xpath("//*[@id='pageContainer']/div[2]/div[3]/div[2]/div/div[2]/div/div[1]/a/img"));
+		//button.click();
 	}
 
 	@And("I click on the add to cart button$")
 	public void click_on_add_to_cart() {
-		
+		user.click_on_add_to_cart();
 		WebDriverWait wait = new WebDriverWait(driver, 10);
 		//JavascriptExecutor jse2 = (JavascriptExecutor)driver;
 		//jse2.executeScript("window.scrollBy(0, 500)", "");
-		WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id='input-6']/div/button")));
-		element.click();
+		//WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id='input-6']/div/button")));
+		//element.click();
 	}
 		@And("I open the cart$")
 		public void open_cart() {
+			user.open_cart();
+			/*
 			WebDriverWait wait = new WebDriverWait(driver, 10);
 			JavascriptExecutor jse2 = (JavascriptExecutor)driver;
 			jse2.executeScript("window.scrollBy(0, -500)", "");
+			user.open_cart();
 			WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id='open-cart']")));
 			element.click();
+			*/
 		}
 	
 	

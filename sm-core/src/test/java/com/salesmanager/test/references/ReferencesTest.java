@@ -21,7 +21,7 @@ import com.salesmanager.test.configuration.ConfigurationTest;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringApplicationConfiguration(classes = {ConfigurationTest.class})
-//@Ignore
+@Ignore
 public class ReferencesTest {
 	
 
@@ -33,7 +33,7 @@ public class ReferencesTest {
 	CountryService countryService;
 	
 	@Test
-	//@Ignore
+	@Ignore
 	public void testReferences() throws ServiceException {
 		
 		Language en = new Language();

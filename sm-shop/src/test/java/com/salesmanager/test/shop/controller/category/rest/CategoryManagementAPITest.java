@@ -38,8 +38,8 @@ public class CategoryManagementAPITest {
 	 * Read - GET a category by id
 	 * @throws Exception
 	 */
-	@Test
 	@Ignore
+	@Test
 	public void getCategory() throws Exception {
 		restTemplate = new RestTemplate();
 		
@@ -60,8 +60,8 @@ public class CategoryManagementAPITest {
 	 * Creates - POST a category for a given store
 	 * @throws Exception
 	 */
-	@Test
 	@Ignore
+	@Test
 	public void postCategory() throws Exception {
 		restTemplate = new RestTemplate();
 		
@@ -100,9 +100,8 @@ public class CategoryManagementAPITest {
 		System.out.println("New Category ID : " + cat.getId());
 	}
 	
-	
-	@Test
 	@Ignore
+	@Test
 	public void postComplexCategory() throws Exception {
 		restTemplate = new RestTemplate();
 		
@@ -268,9 +267,8 @@ public class CategoryManagementAPITest {
 		System.out.println("New Category ID : " + cat.getId());
 	}
 	
-	
-	@Test
 	@Ignore
+	@Test
 	public void deleteCategory() throws Exception {
 		restTemplate = new RestTemplate();
 		

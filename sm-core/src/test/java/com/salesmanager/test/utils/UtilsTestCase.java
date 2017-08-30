@@ -27,7 +27,7 @@ import com.salesmanager.test.configuration.ConfigurationTest;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringApplicationConfiguration(classes = {ConfigurationTest.class})
-//@Ignore
+@Ignore
 public class UtilsTestCase  {
 	
 	
@@ -47,9 +47,8 @@ public class UtilsTestCase  {
 	private GeoLocation geoLoaction;
 	
 
-	
+	@Ignore
 	@Test
-	//@Ignore
 	public void testCache() throws Exception {
 		
 

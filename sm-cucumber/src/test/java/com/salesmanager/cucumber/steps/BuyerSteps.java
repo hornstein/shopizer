@@ -39,10 +39,27 @@ public class BuyerSteps extends ScenarioSteps {
     @Step
 	public void logout() {
 		logoutPage.open();
-		
-		
+			
+	}
+    
+    @Step
+	public void click_on_spring_in_action() {
+		homePage.clickOnSpringInAction();
+			
 	}
 
-
-
+    @Step
+    public void click_on_add_to_cart() {
+    	homePage.clickOnAddToCart();
+    }
+    
+    @Step
+    public void open_cart() {
+    	homePage.open();
+    }
+    
+    @Step
+    public void validate_book_in_shopping_cart() throws InterruptedException {
+    	homePage.open();
+    }
 }
