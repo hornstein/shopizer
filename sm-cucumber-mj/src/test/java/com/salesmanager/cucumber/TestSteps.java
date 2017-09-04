@@ -19,6 +19,7 @@ import org.openqa.selenium.Dimension;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
@@ -37,8 +38,8 @@ public void setUp() throws Throwable {
 //	driver.manage().window().setSize(new Dimension(1920,1080));
     baseUrl = "http://jenkins2017.westeurope.cloudapp.azure.com:8080";
 
-	System.setProperty("webdriver.gecko.driver", "C:\\Seleniumgecko\\geckodriver.exe");
-	driver = new FirefoxDriver();
+	System.setProperty("webdriver.chrome.driver", "C:\\selenium\\chromedriver.exe");
+	driver = new ChromeDriver();
 
 }
 
