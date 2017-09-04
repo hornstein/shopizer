@@ -161,7 +161,7 @@ json="{\"id\" : 0,\"emailAddress\" : \"carl@csticonsulting.com\",\"billing\" : {
 		HttpEntity<String> entity = new HttpEntity<String>(json, getHeader());
 
 		//ResponseEntity response = restTemplate.postForEntity("http://localhost:8080/sm-shop/services/private/DEFAULT/customer", entity, PersistableCustomer.class);
-		ResponseEntity response = restTemplate.postForEntity("http://localhost:8080/services/private/DEFAULT/customer", entity, CustomerEntity.class);
+		ResponseEntity response = restTemplate.postForEntity("http://bluebottle.westeurope.cloudapp.azure.com:8080/services/private/DEFAULT/customer", entity, CustomerEntity.class);
 
 		Customer cust = (Customer) response.getBody();
 		System.out.println("New Customer ID : " + cust.getId());
