@@ -1,0 +1,7 @@
+organization=hornstein-github
+projectKey=com.shopizer:shopizer
+serverUrl=https://sonarcloud.io
+serverVersion=6.5.0.27571
+dashboardUrl=https://sonarcloud.io/dashboard/index/com.shopizer:shopizer
+ceTaskId=AV5tTd97LrM5sI_eZkEx
+ceTaskUrl=https://sonarcloud.io/api/ce/task?id=AV5tTd97LrM5sI_eZkEx
